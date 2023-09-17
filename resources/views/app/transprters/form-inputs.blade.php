@@ -1,7 +1,7 @@
 @php $editing = isset($transprter) @endphp
 
-<div class="row">
-    <x-inputs.group class="col-sm-12">
+<div class="flex flex-wrap">
+    <x-inputs.group class="w-full">
         <x-inputs.text
             name="name"
             label="Name"
@@ -12,7 +12,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="w-full">
         <x-inputs.text
             name="identity"
             label="Identity"
@@ -23,7 +23,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="w-full">
         <x-inputs.text
             name="address"
             label="Address"
@@ -34,7 +34,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="w-full">
         <x-inputs.select name="transprter_type_id" label="Item" required>
             @php $selected = old('transprter_type_id', ($editing ? $transprter->transprter_type_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Transprter Type</option>
@@ -44,7 +44,7 @@
         </x-inputs.select>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="w-full">
         <div
             x-data="imageViewer('{{ $editing && $transprter->photo ? \Storage::url($transprter->photo) : '' }}')"
         >

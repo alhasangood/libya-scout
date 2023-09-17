@@ -1,39 +1,55 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            @lang('crud.donation_entities.create_title')
+        </h2>
+    </x-slot>
 
-@section('content')
-<div class="container">
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">
-                <a href="{{ route('donation-entities.index') }}" class="mr-4"
-                    ><i class="icon ion-md-arrow-back"></i
-                ></a>
-                @lang('crud.donation_entities.create_title')
-            </h4>
-
-            <x-form
-                method="POST"
-                action="{{ route('donation-entities.store') }}"
-                class="mt-4"
-            >
-                @include('app.donation_entities.form-inputs')
-
-                <div class="mt-4">
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <x-partials.card>
+                <x-slot name="title">
                     <a
                         href="{{ route('donation-entities.index') }}"
-                        class="btn btn-light"
-                    >
-                        <i class="icon ion-md-return-left text-primary"></i>
-                        @lang('crud.common.back')
-                    </a>
+                        class="mr-4"
+                        ><i class="mr-1 icon ion-md-arrow-back"></i
+                    ></a>
+                    @lang('crud.donation_entities.create_title')
+                </x-slot>
 
-                    <button type="submit" class="btn btn-primary float-right">
-                        <i class="icon ion-md-save"></i>
-                        @lang('crud.common.create')
-                    </button>
-                </div>
-            </x-form>
+                <x-form
+                    method="POST"
+                    action="{{ route('donation-entities.store') }}"
+                    class="mt-4"
+                >
+                    @include('app.donation_entities.form-inputs')
+
+                    <div class="mt-10">
+                        <a
+                            href="{{ route('donation-entities.index') }}"
+                            class="button"
+                        >
+                            <i
+                                class="
+                                    mr-1
+                                    icon
+                                    ion-md-return-left
+                                    text-primary
+                                "
+                            ></i>
+                            @lang('crud.common.back')
+                        </a>
+
+                        <button
+                            type="submit"
+                            class="button button-primary float-right"
+                        >
+                            <i class="mr-1 icon ion-md-save"></i>
+                            @lang('crud.common.create')
+                        </button>
+                    </div>
+                </x-form>
+            </x-partials.card>
         </div>
     </div>
-</div>
-@endsection
+</x-app-layout>

@@ -1,7 +1,7 @@
 @php $editing = isset($scoutCommission) @endphp
 
-<div class="row">
-    <x-inputs.group class="col-sm-12">
+<div class="flex flex-wrap">
+    <x-inputs.group class="w-full">
         <x-inputs.text
             name="name"
             label="Name"
@@ -12,7 +12,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="w-full">
         <x-inputs.text
             name="phone_number"
             label="Phone Number"

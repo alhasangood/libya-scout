@@ -1,7 +1,7 @@
 @php $editing = isset($order) @endphp
 
-<div class="row">
-    <x-inputs.group class="col-sm-12">
+<div class="flex flex-wrap">
+    <x-inputs.group class="w-full">
         <x-inputs.text
             name="orederNumber"
             label="Oreder Number"
@@ -12,7 +12,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="w-full">
         <x-inputs.select name="transprter_id" label="Transprter" required>
             @php $selected = old('transprter_id', ($editing ? $order->transprter_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Transprter</option>

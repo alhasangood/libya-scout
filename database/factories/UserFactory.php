@@ -31,8 +31,8 @@ class UserFactory extends Factory
             'phone _number' => $this->faker->text(255),
             'roll_id' => \App\Models\Roll::factory(),
             'userable_type' => $this->faker->randomElement([
-                \App\Models\ScoutCommission::class,
                 \App\Models\ScoutRegiment::class,
+                \App\Models\ScoutCommission::class,
             ]),
             'userable_id' => function (array $item) {
                 return app($item['userable_type'])->factory();

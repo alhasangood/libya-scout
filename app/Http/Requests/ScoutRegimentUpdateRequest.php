@@ -22,6 +22,10 @@ class ScoutRegimentUpdateRequest extends FormRequest
         return [
             'name' => ['required', 'max:255', 'string'],
             'phone_number' => ['required', 'max:255'],
+            'scout_commission_id' => [
+                'required',
+                'exists:scout_commissions,id',
+            ],
         ];
     }
 }

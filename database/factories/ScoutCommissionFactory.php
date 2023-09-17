@@ -27,7 +27,7 @@ class ScoutCommissionFactory extends Factory
             'phone_number' => $this->faker->randomNumber(),
             'scout_commissionable_type' => $this->faker->randomElement([
                 \App\Models\StoreHouse::class,
-                \App\Models\ScoutCommission::class,
+                \App\Models\User::class,
             ]),
             'scout_commissionable_id' => function (array $item) {
                 return app($item['scout_commissionable_type'])->factory();

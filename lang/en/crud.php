@@ -151,6 +151,7 @@ return [
         'inputs' => [
             'name' => 'Name',
             'phone_number' => 'Phone Number',
+            'scout_commission_id' => 'Scout Commission',
         ],
     ],
 
@@ -163,8 +164,8 @@ return [
         'show_title' => 'Show StoreHouse',
         'inputs' => [
             'name' => 'Name',
-            'store_houseable_id' => 'Store Houseable Id',
             'store_houseable_type' => 'Store Houseable Type',
+            'store_houseable_id' => 'Store Houseable Id',
         ],
     ],
 
@@ -209,7 +210,7 @@ return [
             'password' => 'Password',
             'phone _number' => 'Phone Number',
             'userable_type' => 'Userable Type',
-            'userable_id' => 'يتبع ',
+            'userable_id' => 'تابعية',
         ],
     ],
 

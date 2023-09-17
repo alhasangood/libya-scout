@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Models\ScoutRegiment;
+use App\Models\ScoutCommission;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ScoutRegimentStoreRequest;
 use App\Http\Requests\ScoutRegimentUpdateRequest;
@@ -38,7 +39,9 @@ class ScoutRegimentController extends Controller
     {
         $this->authorize('create', ScoutRegiment::class);
 
-        return view('app.scout_regiments.create');
+        $scoutCommissions = ScoutCommission::pluck('name', 'id');
+
+        return view('app.scout_regiments.create', compact('scoutCommissions'));
     }
 
     /**
@@ -74,7 +77,12 @@ class ScoutRegimentController extends Controller
     {
         $this->authorize('update', $scoutRegiment);
 
-        return view('app.scout_regiments.edit', compact('scoutRegiment'));
+        $scoutCommissions = ScoutCommission::pluck('name', 'id');
+
+        return view(
+            'app.scout_regiments.edit',
+            compact('scoutRegiment', 'scoutCommissions')
+        );
     }
 
     /**

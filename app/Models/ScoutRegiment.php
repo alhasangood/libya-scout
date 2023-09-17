@@ -28,11 +28,6 @@ class ScoutRegiment extends Model
         return $this->belongsTo(ScoutCommission::class);
     }
 
-    public function scoutRegiments()
-    {
-        return $this->morphMany(ScoutRegiment::class, 'scout_regimentable');
-    }
-
     public function storeHouses()
     {
         return $this->morphMany(StoreHouse::class, 'store_houseable');
@@ -41,6 +36,11 @@ class ScoutRegiment extends Model
     public function users()
     {
         return $this->morphMany(User::class, 'userable');
+    }
+
+    public function storeHouses()
+    {
+        return $this->morphMany(StoreHouse::class, 'store_houseable');
     }
 
     public function scout_regimentable()

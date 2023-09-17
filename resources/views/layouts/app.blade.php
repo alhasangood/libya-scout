@@ -19,21 +19,20 @@
         <!-- Icons -->
         <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
         
-        <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-        
         <!-- Scripts -->
-        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 
         
         @livewireStyles
     </head>
     
-    <body>
+    <body class="min-h-screen bg-gray-50">
         <div id="app">
             @include('layouts.nav')
         
-            <main class="py-4">
-                @yield('content')
+            <main class="p-6">
+                {{ $slot }}
             </main>
         </div>
 

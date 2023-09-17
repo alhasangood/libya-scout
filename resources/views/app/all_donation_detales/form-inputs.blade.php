@@ -1,7 +1,7 @@
 @php $editing = isset($donationDetales) @endphp
 
-<div class="row">
-    <x-inputs.group class="col-sm-12">
+<div class="flex flex-wrap">
+    <x-inputs.group class="w-full">
         <x-inputs.text
             name="name"
             label="Name"
@@ -12,7 +12,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="w-full">
         <x-inputs.text
             name="person"
             label="Person"
@@ -23,7 +23,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="w-full">
         <x-inputs.text
             name="phone_number"
             label="Phone Number"
@@ -34,7 +34,7 @@
         ></x-inputs.text>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="w-full">
         <x-inputs.select
             name="donation_entity_id"
             label="Donation Entity"
@@ -48,7 +48,7 @@
         </x-inputs.select>
     </x-inputs.group>
 
-    <x-inputs.group class="col-sm-12">
+    <x-inputs.group class="w-full">
         <div
             x-data="imageViewer('{{ $editing && $donationDetales->logo ? \Storage::url($donationDetales->logo) : '' }}')"
         >

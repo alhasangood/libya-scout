@@ -1,39 +1,53 @@
-@extends('layouts.app')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            @lang('crud.transprter_types.create_title')
+        </h2>
+    </x-slot>
 
-@section('content')
-<div class="container">
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">
-                <a href="{{ route('transprter-types.index') }}" class="mr-4"
-                    ><i class="icon ion-md-arrow-back"></i
-                ></a>
-                @lang('crud.transprter_types.create_title')
-            </h4>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <x-partials.card>
+                <x-slot name="title">
+                    <a href="{{ route('transprter-types.index') }}" class="mr-4"
+                        ><i class="mr-1 icon ion-md-arrow-back"></i
+                    ></a>
+                    @lang('crud.transprter_types.create_title')
+                </x-slot>
 
-            <x-form
-                method="POST"
-                action="{{ route('transprter-types.store') }}"
-                class="mt-4"
-            >
-                @include('app.transprter_types.form-inputs')
+                <x-form
+                    method="POST"
+                    action="{{ route('transprter-types.store') }}"
+                    class="mt-4"
+                >
+                    @include('app.transprter_types.form-inputs')
 
-                <div class="mt-4">
-                    <a
-                        href="{{ route('transprter-types.index') }}"
-                        class="btn btn-light"
-                    >
-                        <i class="icon ion-md-return-left text-primary"></i>
-                        @lang('crud.common.back')
-                    </a>
+                    <div class="mt-10">
+                        <a
+                            href="{{ route('transprter-types.index') }}"
+                            class="button"
+                        >
+                            <i
+                                class="
+                                    mr-1
+                                    icon
+                                    ion-md-return-left
+                                    text-primary
+                                "
+                            ></i>
+                            @lang('crud.common.back')
+                        </a>
 
-                    <button type="submit" class="btn btn-primary float-right">
-                        <i class="icon ion-md-save"></i>
-                        @lang('crud.common.create')
-                    </button>
-                </div>
-            </x-form>
+                        <button
+                            type="submit"
+                            class="button button-primary float-right"
+                        >
+                            <i class="mr-1 icon ion-md-save"></i>
+                            @lang('crud.common.create')
+                        </button>
+                    </div>
+                </x-form>
+            </x-partials.card>
         </div>
     </div>
-</div>
-@endsection
+</x-app-layout>

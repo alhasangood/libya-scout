@@ -27,14 +27,14 @@ class ScoutCommission extends Model
         return $this->hasMany(ScoutRegiment::class);
     }
 
-    public function user()
+    public function users()
     {
-        return $this->morphOne(User::class, 'userable');
+        return $this->morphMany(User::class, 'userable');
     }
 
-    public function scoutCommissions()
+    public function storeHouses()
     {
-        return $this->morphMany(ScoutCommission::class, 'scout_commissionable');
+        return $this->morphMany(StoreHouse::class, 'store_houseable');
     }
 
     public function scout_commissionable()

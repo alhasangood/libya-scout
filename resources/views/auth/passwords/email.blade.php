@@ -1,47 +1,41 @@
-@extends('layouts.app')
+<x-app-layout>
+    <div class="mx-auto px-4 md:px-8">
+        <x-partials.card>
+            <x-slot name="title">{{ __('Reset Password') }}</x-slot>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+            <div class="flex-auto p-6">
+                @if (session('status'))
+                    <div class="relative px-3 py-3 mb-4 border rounded bg-green-200 border-green-300 text-green-800" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                <form method="POST" action="{{ route('password.email') }}">
+                    @csrf
+
+                    <div class="mb-4 flex flex-wrap ">
+                        <label for="email" class="md:w-1/3 pr-4 pl-4 pt-2 pb-2 leading-normal md:text-right">{{ __('E-Mail Address') }}</label>
+
+                        <div class="md:w-1/2 pr-4 pl-4">
+                            <x-inputs.email name="email" value="{{ old('email') }}" required autocomplete="email" autofocus/>
+
+                            @error('email')
+                                <span class="hidden mt-1 text-sm text-red" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                    @endif
+                    </div>
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                    <div class="mb-4 flex flex-wrap ">
+                        <div class="md:w-1/2 pr-4 pl-4 md:mx-1/3">
+                            <button type="submit" class="button button-primary">
+                                {{ __('Send Password Reset Link') }}
+                            </button>
                         </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
-        </div>
+        </x-partials.card>
     </div>
-</div>
-@endsection
+</x-app-layout>

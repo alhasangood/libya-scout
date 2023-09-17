@@ -1,30 +1,20 @@
 <div>
-    <div class="mb-4">
+    <div>
         @can('create', App\Models\Item::class)
-        <button class="btn btn-primary" wire:click="newItem">
-            <i class="icon ion-md-add"></i>
+        <button class="button" wire:click="newItem">
+            <i class="mr-1 icon ion-md-add text-primary"></i>
             @lang('crud.common.attach')
         </button>
         @endcan
     </div>
 
-    <x-modal id="order-items-modal" wire:model="showingModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">{{ $modalTitle }}</h5>
-                <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                >
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
+    <x-modal wire:model="showingModal">
+        <div class="px-6 py-4">
+            <div class="text-lg font-bold">{{ $modalTitle }}</div>
 
-            <div class="modal-body">
+            <div class="mt-5">
                 <div>
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="w-full">
                         <x-inputs.select
                             name="item_id"
                             label="Item"
@@ -37,7 +27,7 @@
                         </x-inputs.select>
                     </x-inputs.group>
 
-                    <x-inputs.group class="col-sm-12">
+                    <x-inputs.group class="w-full">
                         <x-inputs.text
                             name="qtuantity"
                             label="Qtuantity"
@@ -48,33 +38,37 @@
                     </x-inputs.group>
                 </div>
             </div>
+        </div>
 
-            <div class="modal-footer">
-                <button
-                    type="button"
-                    class="btn btn-light float-left"
-                    wire:click="$toggle('showingModal')"
-                >
-                    <i class="icon ion-md-close"></i>
-                    @lang('crud.common.cancel')
-                </button>
+        <div class="px-6 py-4 bg-gray-50 flex justify-between">
+            <button
+                type="button"
+                class="button"
+                wire:click="$toggle('showingModal')"
+            >
+                <i class="mr-1 icon ion-md-close"></i>
+                @lang('crud.common.cancel')
+            </button>
 
-                <button type="button" class="btn btn-primary" wire:click="save">
-                    <i class="icon ion-md-save"></i>
-                    @lang('crud.common.save')
-                </button>
-            </div>
+            <button
+                type="button"
+                class="button button-primary"
+                wire:click="save"
+            >
+                <i class="mr-1 icon ion-md-save"></i>
+                @lang('crud.common.save')
+            </button>
         </div>
     </x-modal>
 
-    <div class="table-responsive">
-        <table class="table table-borderless table-hover">
-            <thead>
+    <div class="block w-full overflow-auto scrolling-touch mt-4">
+        <table class="w-full max-w-full mb-4 bg-transparent">
+            <thead class="text-gray-700">
                 <tr>
-                    <th class="text-left">
+                    <th class="px-4 py-3 text-left">
                         @lang('crud.order_items.inputs.item_id')
                     </th>
-                    <th class="text-left">
+                    <th class="px-4 py-3 text-left">
                         @lang('crud.order_items.inputs.qtuantity')
                     </th>
                     <th></th>
@@ -83,11 +77,13 @@
             <tbody class="text-gray-600">
                 @foreach ($orderItems as $item)
                 <tr class="hover:bg-gray-100">
-                    <td class="text-left">{{ $item->name ?? '-' }}</td>
-                    <td class="text-left">
+                    <td class="px-4 py-3 text-left">
+                        {{ $item->name ?? '-' }}
+                    </td>
+                    <td class="px-4 py-3 text-left">
                         {{ $item->pivot->qtuantity ?? '-' }}
                     </td>
-                    <td class="text-right" style="width: 70px;">
+                    <td class="px-4 py-3 text-right" style="width: 70px;">
                         <div
                             role="group"
                             aria-label="Row Actions"
@@ -95,11 +91,13 @@
                         >
                             @can('delete-any', App\Models\Item::class)
                             <button
-                                class="btn btn-danger"
+                                class="button button-danger"
                                 onclick="confirm('Are you sure?') || event.stopImmediatePropagation()"
                                 wire:click="detach('{{ $item->id }}')"
                             >
-                                <i class="icon ion-md-trash"></i>
+                                <i
+                                    class="mr-1 icon ion-md-trash text-primary"
+                                ></i>
                                 @lang('crud.common.detach')
                             </button>
                             @endcan
@@ -110,7 +108,11 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="3">{{ $orderItems->render() }}</td>
+                    <td colspan="3">
+                        <div class="mt-10 px-4">
+                            {{ $orderItems->render() }}
+                        </div>
+                    </td>
                 </tr>
             </tfoot>
         </table>

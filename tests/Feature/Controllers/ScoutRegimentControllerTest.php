@@ -68,7 +68,6 @@ class ScoutRegimentControllerTest extends TestCase
 
         unset($data['scout_regimentable_id']);
         unset($data['scout_regimentable_type']);
-        unset($data['scout_commission_id']);
 
         $this->assertDatabaseHas('scout_regiments', $data);
 
@@ -131,7 +130,6 @@ class ScoutRegimentControllerTest extends TestCase
 
         unset($data['scout_regimentable_id']);
         unset($data['scout_regimentable_type']);
-        unset($data['scout_commission_id']);
 
         $data['id'] = $scoutRegiment->id;
 

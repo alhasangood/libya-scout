@@ -1,7 +1,7 @@
 @php $editing = isset($roll) @endphp
 
-<div class="row">
-    <x-inputs.group class="col-sm-12">
+<div class="flex flex-wrap">
+    <x-inputs.group class="w-full">
         <x-inputs.text
             name="name"
             label="Name"
