@@ -12,13 +12,6 @@ return new class extends Migration {
     {
         Schema::table('donation_detales', function (Blueprint $table) {
             $table
-                ->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onUpdate('CASCADE')
-                ->onDelete('CASCADE');
-
-            $table
                 ->foreign('donation_entity_id')
                 ->references('id')
                 ->on('donation_entities')
@@ -33,7 +26,6 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::table('donation_detales', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
             $table->dropForeign(['donation_entity_id']);
         });
     }

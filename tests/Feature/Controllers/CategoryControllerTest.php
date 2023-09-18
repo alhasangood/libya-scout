@@ -5,6 +5,9 @@ namespace Tests\Feature\Controllers;
 use App\Models\User;
 use App\Models\Category;
 
+use App\Models\Item;
+use App\Models\Donation;
+
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -108,8 +111,12 @@ class CategoryControllerTest extends TestCase
     {
         $category = Category::factory()->create();
 
+        $donation = Donation::factory()->create();
+        $item = Item::factory()->create();
+
         $data = [
-            'name' => $this->faker->name(),
+            'donation_id' => $donation->id,
+            'item_id' => $item->id,
         ];
 
         $response = $this->put(route('categories.update', $category), $data);

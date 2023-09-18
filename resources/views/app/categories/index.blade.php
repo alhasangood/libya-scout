@@ -54,7 +54,10 @@
                         <thead class="text-gray-700">
                             <tr>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.categories.inputs.name')
+                                    @lang('crud.categories.inputs.donation_id')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.categories.inputs.item_id')
                                 </th>
                                 <th></th>
                             </tr>
@@ -63,7 +66,11 @@
                             @forelse($categories as $category)
                             <tr class="hover:bg-gray-50">
                                 <td class="px-4 py-3 text-left">
-                                    {{ $category->name ?? '-' }}
+                                    {{ optional($category->donation)->name ??
+                                    '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ optional($category->item)->name ?? '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -130,7 +137,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -138,7 +145,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <div class="mt-10 px-4">
                                         {!! $categories->render() !!}
                                     </div>

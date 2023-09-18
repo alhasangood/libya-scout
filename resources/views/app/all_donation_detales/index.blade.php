@@ -54,19 +54,19 @@
                         <thead class="text-gray-700">
                             <tr>
                                 <th class="px-4 py-3 text-left">
+                                    @lang('crud.all_donation_detales.inputs.donation_entity_id')
+                                </th>
+                                <th class="px-4 py-3 text-left">
                                     @lang('crud.all_donation_detales.inputs.name')
                                 </th>
                                 <th class="px-4 py-3 text-left">
                                     @lang('crud.all_donation_detales.inputs.person')
                                 </th>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.all_donation_detales.inputs.phone_number')
-                                </th>
-                                <th class="px-4 py-3 text-left">
-                                    @lang('crud.all_donation_detales.inputs.donation_entity_id')
-                                </th>
-                                <th class="px-4 py-3 text-left">
                                     @lang('crud.all_donation_detales.inputs.logo')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.all_donation_detales.inputs.number')
                                 </th>
                                 <th></th>
                             </tr>
@@ -75,23 +75,21 @@
                             @forelse($allDonationDetales as $donationDetales)
                             <tr class="hover:bg-gray-50">
                                 <td class="px-4 py-3 text-left">
+                                    {{
+                                    optional($donationDetales->donationEntity)->name
+                                    ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
                                     {{ $donationDetales->name ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{ $donationDetales->person ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
-                                    {{ $donationDetales->phone_number ?? '-' }}
+                                    {{ $donationDetales->logo ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
-                                    {{
-                                    optional($donationDetales->donationEntity)->name
-                                    ?? '-' }}
-                                </td>
-                                <td class="px-4 py-3 text-left">
-                                    <x-partials.thumbnail
-                                        src="{{ $donationDetales->logo ? \Storage::url($donationDetales->logo) : '' }}"
-                                    />
+                                    {{ $donationDetales->number ?? '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"

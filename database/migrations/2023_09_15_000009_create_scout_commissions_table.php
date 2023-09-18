@@ -13,12 +13,12 @@ return new class extends Migration {
         Schema::create('scout_commissions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->bigInteger('phone_number');
-            $table->unsignedBigInteger('scout_commissionable_id');
-            $table->string('scout_commissionable_type');
-
-            $table->index('scout_commissionable_id');
-            $table->index('scout_commissionable_type');
+            $table->bigInteger('phone');
+            $table->bigInteger('status');
+            // $table->unsignedBigInteger('store_house_id');
+            // $table->unsignedBigInteger('order_id');
+            // $table->unsignedBigInteger('user_id');
+            // $table->unsignedBigInteger('scout_regiment_id');
 
             $table->timestamps();
         });

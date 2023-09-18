@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
-use App\Models\Category;
 use Illuminate\View\View;
+use App\Models\StoreHouse;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ItemStoreRequest;
@@ -36,9 +36,9 @@ class ItemController extends Controller
     {
         $this->authorize('create', Item::class);
 
-        $categories = Category::pluck('name', 'id');
+        $storeHouses = StoreHouse::pluck('name', 'id');
 
-        return view('app.items.create', compact('categories'));
+        return view('app.items.create', compact('storeHouses'));
     }
 
     /**
@@ -74,9 +74,9 @@ class ItemController extends Controller
     {
         $this->authorize('update', $item);
 
-        $categories = Category::pluck('name', 'id');
+        $storeHouses = StoreHouse::pluck('name', 'id');
 
-        return view('app.items.edit', compact('item', 'categories'));
+        return view('app.items.edit', compact('item', 'storeHouses'));
     }
 
     /**

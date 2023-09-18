@@ -5,6 +5,10 @@ namespace Tests\Feature\Api;
 use App\Models\User;
 use App\Models\ScoutCommission;
 
+use App\Models\Order;
+use App\Models\StoreHouse;
+use App\Models\ScoutRegiment;
+
 use Tests\TestCase;
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -55,9 +59,6 @@ class ScoutCommissionTest extends TestCase
             $data
         );
 
-        unset($data['scout_commissionable_id']);
-        unset($data['scout_commissionable_type']);
-
         $this->assertDatabaseHas('scout_commissions', $data);
 
         $response->assertStatus(201)->assertJsonFragment($data);
@@ -70,18 +71,25 @@ class ScoutCommissionTest extends TestCase
     {
         $scoutCommission = ScoutCommission::factory()->create();
 
+        $storeHouse = StoreHouse::factory()->create();
+        $order = Order::factory()->create();
+        $user = User::factory()->create();
+        $scoutRegiment = ScoutRegiment::factory()->create();
+
         $data = [
             'name' => $this->faker->name(),
-            'phone_number' => $this->faker->randomNumber(),
+            'phone' => $this->faker->randomNumber(),
+            'status' => $this->faker->randomNumber(),
+            'store_house_id' => $storeHouse->id,
+            'order_id' => $order->id,
+            'user_id' => $user->id,
+            'scout_regiment_id' => $scoutRegiment->id,
         ];
 
         $response = $this->putJson(
             route('api.scout-commissions.update', $scoutCommission),
             $data
         );
-
-        unset($data['scout_commissionable_id']);
-        unset($data['scout_commissionable_type']);
 
         $data['id'] = $scoutCommission->id;
 

@@ -5,8 +5,7 @@ namespace Tests\Feature\Api;
 use App\Models\User;
 use App\Models\Donation;
 
-use App\Models\Item;
-use App\Models\StoreHouse;
+use App\Models\Order;
 use App\Models\DonationDetales;
 
 use Tests\TestCase;
@@ -42,7 +41,7 @@ class DonationTest extends TestCase
 
         $response = $this->getJson(route('api.donations.index'));
 
-        $response->assertOk()->assertSee($donations[0]->description);
+        $response->assertOk()->assertSee($donations[0]->name);
     }
 
     /**
@@ -55,10 +54,6 @@ class DonationTest extends TestCase
             ->toArray();
 
         $response = $this->postJson(route('api.donations.store'), $data);
-
-        unset($data['qtuantity']);
-        unset($data['item_id']);
-        unset($data['store_house_id']);
 
         $this->assertDatabaseHas('donations', $data);
 
@@ -73,25 +68,19 @@ class DonationTest extends TestCase
         $donation = Donation::factory()->create();
 
         $donationDetales = DonationDetales::factory()->create();
-        $item = Item::factory()->create();
-        $storeHouse = StoreHouse::factory()->create();
+        $order = Order::factory()->create();
 
         $data = [
-            'description' => $this->faker->name(),
-            'qtuantity' => $this->faker->randomNumber(),
+            'name' => $this->faker->name(),
+            'status' => $this->faker->randomNumber(),
             'donation_detales_id' => $donationDetales->id,
-            'item_id' => $item->id,
-            'store_house_id' => $storeHouse->id,
+            'order_id' => $order->id,
         ];
 
         $response = $this->putJson(
             route('api.donations.update', $donation),
             $data
         );
-
-        unset($data['qtuantity']);
-        unset($data['item_id']);
-        unset($data['store_house_id']);
 
         $data['id'] = $donation->id;
 

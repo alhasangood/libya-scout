@@ -20,6 +20,15 @@
                 <div class="mt-4 px-4">
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
+                            @lang('crud.all_donation_detales.inputs.donation_entity_id')
+                        </h5>
+                        <span
+                            >{{ optional($donationDetales->donationEntity)->name
+                            ?? '-' }}</span
+                        >
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
                             @lang('crud.all_donation_detales.inputs.name')
                         </h5>
                         <span>{{ $donationDetales->name ?? '-' }}</span>
@@ -32,27 +41,15 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
-                            @lang('crud.all_donation_detales.inputs.phone_number')
-                        </h5>
-                        <span>{{ $donationDetales->phone_number ?? '-' }}</span>
-                    </div>
-                    <div class="mb-4">
-                        <h5 class="font-medium text-gray-700">
-                            @lang('crud.all_donation_detales.inputs.donation_entity_id')
-                        </h5>
-                        <span
-                            >{{ optional($donationDetales->donationEntity)->name
-                            ?? '-' }}</span
-                        >
-                    </div>
-                    <div class="mb-4">
-                        <h5 class="font-medium text-gray-700">
                             @lang('crud.all_donation_detales.inputs.logo')
                         </h5>
-                        <x-partials.thumbnail
-                            src="{{ $donationDetales->logo ? \Storage::url($donationDetales->logo) : '' }}"
-                            size="150"
-                        />
+                        <span>{{ $donationDetales->logo ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.all_donation_detales.inputs.number')
+                        </h5>
+                        <span>{{ $donationDetales->number ?? '-' }}</span>
                     </div>
                 </div>
 

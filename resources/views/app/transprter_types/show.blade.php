@@ -22,6 +22,21 @@
                         </h5>
                         <span>{{ $transprterType->name ?? '-' }}</span>
                     </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.transprter_types.inputs.status')
+                        </h5>
+                        <span>{{ $transprterType->status ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.transprter_types.inputs.transprter_id')
+                        </h5>
+                        <span
+                            >{{ optional($transprterType->transprter)->name ??
+                            '-' }}</span
+                        >
+                    </div>
                 </div>
 
                 <div class="mt-10">

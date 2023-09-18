@@ -14,8 +14,6 @@ return new class extends Migration {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('item_id');
             $table->string('name');
-            $table->string('unit');
-            $table->bigInteger('qtuantity');
 
             $table->timestamps();
         });

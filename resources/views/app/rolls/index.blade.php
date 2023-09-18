@@ -54,6 +54,9 @@
                                 <th class="px-4 py-3 text-left">
                                     @lang('crud.rolls.inputs.name')
                                 </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.rolls.inputs.user_id')
+                                </th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -62,6 +65,9 @@
                             <tr class="hover:bg-gray-50">
                                 <td class="px-4 py-3 text-left">
                                     {{ $roll->name ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ optional($roll->user)->name ?? '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -128,7 +134,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -136,7 +142,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="2">
+                                <td colspan="3">
                                     <div class="mt-10 px-4">
                                         {!! $rolls->render() !!}
                                     </div>

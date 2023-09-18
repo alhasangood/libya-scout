@@ -12,9 +12,9 @@ return new class extends Migration {
     {
         Schema::table('items', function (Blueprint $table) {
             $table
-                ->foreign('category_id')
+                ->foreign('store_house_id')
                 ->references('id')
-                ->on('categories')
+                ->on('store_houses')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
         });
@@ -26,7 +26,7 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::table('items', function (Blueprint $table) {
-            $table->dropForeign(['category_id']);
+            $table->dropForeign(['store_house_id']);
         });
     }
 };

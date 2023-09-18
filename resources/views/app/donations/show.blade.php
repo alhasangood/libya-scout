@@ -18,9 +18,15 @@
                 <div class="mt-4 px-4">
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
-                            @lang('crud.donations.inputs.description')
+                            @lang('crud.donations.inputs.name')
                         </h5>
-                        <span>{{ $donation->description ?? '-' }}</span>
+                        <span>{{ $donation->name ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.donations.inputs.status')
+                        </h5>
+                        <span>{{ $donation->status ?? '-' }}</span>
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
@@ -30,6 +36,12 @@
                             >{{ optional($donation->donationDetales)->name ??
                             '-' }}</span
                         >
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.donations.inputs.order_id')
+                        </h5>
+                        <span>{{ optional($donation->order)->id ?? '-' }}</span>
                     </div>
                 </div>
 

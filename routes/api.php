@@ -10,31 +10,25 @@ use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\DonationController;
-use App\Http\Controllers\Api\RollUsersController;
-use App\Http\Controllers\Api\ItemOrdersController;
-use App\Http\Controllers\Api\OrderItemsController;
 use App\Http\Controllers\Api\StoreHouseController;
 use App\Http\Controllers\Api\TransprterController;
-use App\Http\Controllers\Api\item_orderController;
 use App\Http\Controllers\Api\PermissionController;
 use App\Http\Controllers\Api\ItemDetailsController;
-use App\Http\Controllers\Api\CategoryItemsController;
-use App\Http\Controllers\Api\ItemDonationsController;
 use App\Http\Controllers\Api\ScoutRegimentController;
 use App\Http\Controllers\Api\DonationEntityController;
+use App\Http\Controllers\Api\ItemCategoriesController;
+use App\Http\Controllers\Api\OrderDonationsController;
 use App\Http\Controllers\Api\TransprterTypeController;
 use App\Http\Controllers\Api\DonationDetalesController;
 use App\Http\Controllers\Api\ScoutCommissionController;
-use App\Http\Controllers\Api\OrderStoreHousesController;
-use App\Http\Controllers\Api\StoreHouseOrdersController;
-use App\Http\Controllers\Api\TransprterOrdersController;
-use App\Http\Controllers\Api\order_store_houseController;
+use App\Http\Controllers\Api\StoreHouseItemsController;
+use App\Http\Controllers\Api\OrderTransprtersController;
+use App\Http\Controllers\Api\DonationCategoriesController;
 use App\Http\Controllers\Api\ItemAllItemDetailsController;
-use App\Http\Controllers\Api\StoreHouseDonationsController;
-use App\Http\Controllers\Api\UserAllDonationDetalesController;
+use App\Http\Controllers\Api\OrderScoutRegimentsController;
+use App\Http\Controllers\Api\OrderScoutCommissionsController;
 use App\Http\Controllers\Api\DonationDetalesDonationsController;
-use App\Http\Controllers\Api\TransprterTypeTransprtersController;
-use App\Http\Controllers\Api\ScoutCommissionScoutRegimentsController;
+use App\Http\Controllers\Api\TransprterTransprterTypesController;
 use App\Http\Controllers\Api\DonationEntityAllDonationDetalesController;
 
 /*
@@ -64,17 +58,17 @@ Route::name('api.')
 
         Route::apiResource('categories', CategoryController::class);
 
-        // Category Items
-        Route::get('/categories/{category}/items', [
-            CategoryItemsController::class,
-            'index',
-        ])->name('categories.items.index');
-        Route::post('/categories/{category}/items', [
-            CategoryItemsController::class,
-            'store',
-        ])->name('categories.items.store');
-
         Route::apiResource('donations', DonationController::class);
+
+        // Donation Categories
+        Route::get('/donations/{donation}/categories', [
+            DonationCategoriesController::class,
+            'index',
+        ])->name('donations.categories.index');
+        Route::post('/donations/{donation}/categories', [
+            DonationCategoriesController::class,
+            'store',
+        ])->name('donations.categories.store');
 
         Route::apiResource(
             'all-donation-detales',
@@ -108,15 +102,15 @@ Route::name('api.')
 
         Route::apiResource('items', ItemController::class);
 
-        // Item Donations
-        Route::get('/items/{item}/donations', [
-            ItemDonationsController::class,
+        // Item Categories
+        Route::get('/items/{item}/categories', [
+            ItemCategoriesController::class,
             'index',
-        ])->name('items.donations.index');
-        Route::post('/items/{item}/donations', [
-            ItemDonationsController::class,
+        ])->name('items.categories.index');
+        Route::post('/items/{item}/categories', [
+            ItemCategoriesController::class,
             'store',
-        ])->name('items.donations.store');
+        ])->name('items.categories.store');
 
         // Item All Item Details
         Route::get('/items/{item}/all-item-details', [
@@ -128,140 +122,84 @@ Route::name('api.')
             'store',
         ])->name('items.all-item-details.store');
 
-        // Item Orders
-        Route::get('/items/{item}/orders', [
-            ItemOrdersController::class,
-            'index',
-        ])->name('items.orders.index');
-        Route::post('/items/{item}/orders/{order}', [
-            ItemOrdersController::class,
-            'store',
-        ])->name('items.orders.store');
-        Route::delete('/items/{item}/orders/{order}', [
-            ItemOrdersController::class,
-            'destroy',
-        ])->name('items.orders.destroy');
-
         Route::apiResource('all-item-details', ItemDetailsController::class);
 
         Route::apiResource('orders', OrderController::class);
 
-        // Order Items
-        Route::get('/orders/{order}/items', [
-            OrderItemsController::class,
+        // Order Scout Commissions
+        Route::get('/orders/{order}/scout-commissions', [
+            OrderScoutCommissionsController::class,
             'index',
-        ])->name('orders.items.index');
-        Route::post('/orders/{order}/items/{item}', [
-            OrderItemsController::class,
+        ])->name('orders.scout-commissions.index');
+        Route::post('/orders/{order}/scout-commissions', [
+            OrderScoutCommissionsController::class,
             'store',
-        ])->name('orders.items.store');
-        Route::delete('/orders/{order}/items/{item}', [
-            OrderItemsController::class,
-            'destroy',
-        ])->name('orders.items.destroy');
+        ])->name('orders.scout-commissions.store');
 
-        // Order Store Houses
-        Route::get('/orders/{order}/store-houses', [
-            OrderStoreHousesController::class,
+        // Order Scout Regiments
+        Route::get('/orders/{order}/scout-regiments', [
+            OrderScoutRegimentsController::class,
             'index',
-        ])->name('orders.store-houses.index');
-        Route::post('/orders/{order}/store-houses/{storeHouse}', [
-            OrderStoreHousesController::class,
+        ])->name('orders.scout-regiments.index');
+        Route::post('/orders/{order}/scout-regiments', [
+            OrderScoutRegimentsController::class,
             'store',
-        ])->name('orders.store-houses.store');
-        Route::delete('/orders/{order}/store-houses/{storeHouse}', [
-            OrderStoreHousesController::class,
-            'destroy',
-        ])->name('orders.store-houses.destroy');
+        ])->name('orders.scout-regiments.store');
+
+        // Order Transprters
+        Route::get('/orders/{order}/transprters', [
+            OrderTransprtersController::class,
+            'index',
+        ])->name('orders.transprters.index');
+        Route::post('/orders/{order}/transprters', [
+            OrderTransprtersController::class,
+            'store',
+        ])->name('orders.transprters.store');
+
+        // Order Donations
+        Route::get('/orders/{order}/donations', [
+            OrderDonationsController::class,
+            'index',
+        ])->name('orders.donations.index');
+        Route::post('/orders/{order}/donations', [
+            OrderDonationsController::class,
+            'store',
+        ])->name('orders.donations.store');
 
         Route::apiResource('rolls', RollController::class);
-
-        // Roll Users
-        Route::get('/rolls/{roll}/users', [
-            RollUsersController::class,
-            'index',
-        ])->name('rolls.users.index');
-        Route::post('/rolls/{roll}/users', [
-            RollUsersController::class,
-            'store',
-        ])->name('rolls.users.store');
 
         Route::apiResource(
             'scout-commissions',
             ScoutCommissionController::class
         );
 
-        // ScoutCommission Scout Regiments
-        Route::get('/scout-commissions/{scoutCommission}/scout-regiments', [
-            ScoutCommissionScoutRegimentsController::class,
-            'index',
-        ])->name('scout-commissions.scout-regiments.index');
-        Route::post('/scout-commissions/{scoutCommission}/scout-regiments', [
-            ScoutCommissionScoutRegimentsController::class,
-            'store',
-        ])->name('scout-commissions.scout-regiments.store');
-
         Route::apiResource('scout-regiments', ScoutRegimentController::class);
 
         Route::apiResource('store-houses', StoreHouseController::class);
 
-        // StoreHouse Donations
-        Route::get('/store-houses/{storeHouse}/donations', [
-            StoreHouseDonationsController::class,
+        // StoreHouse Items
+        Route::get('/store-houses/{storeHouse}/items', [
+            StoreHouseItemsController::class,
             'index',
-        ])->name('store-houses.donations.index');
-        Route::post('/store-houses/{storeHouse}/donations', [
-            StoreHouseDonationsController::class,
+        ])->name('store-houses.items.index');
+        Route::post('/store-houses/{storeHouse}/items', [
+            StoreHouseItemsController::class,
             'store',
-        ])->name('store-houses.donations.store');
-
-        // StoreHouse Orders
-        Route::get('/store-houses/{storeHouse}/orders', [
-            StoreHouseOrdersController::class,
-            'index',
-        ])->name('store-houses.orders.index');
-        Route::post('/store-houses/{storeHouse}/orders/{order}', [
-            StoreHouseOrdersController::class,
-            'store',
-        ])->name('store-houses.orders.store');
-        Route::delete('/store-houses/{storeHouse}/orders/{order}', [
-            StoreHouseOrdersController::class,
-            'destroy',
-        ])->name('store-houses.orders.destroy');
+        ])->name('store-houses.items.store');
 
         Route::apiResource('transprters', TransprterController::class);
 
-        // Transprter Orders
-        Route::get('/transprters/{transprter}/orders', [
-            TransprterOrdersController::class,
+        // Transprter Transprter Types
+        Route::get('/transprters/{transprter}/transprter-types', [
+            TransprterTransprterTypesController::class,
             'index',
-        ])->name('transprters.orders.index');
-        Route::post('/transprters/{transprter}/orders', [
-            TransprterOrdersController::class,
+        ])->name('transprters.transprter-types.index');
+        Route::post('/transprters/{transprter}/transprter-types', [
+            TransprterTransprterTypesController::class,
             'store',
-        ])->name('transprters.orders.store');
+        ])->name('transprters.transprter-types.store');
 
         Route::apiResource('transprter-types', TransprterTypeController::class);
 
-        // TransprterType Transprters
-        Route::get('/transprter-types/{transprterType}/transprters', [
-            TransprterTypeTransprtersController::class,
-            'index',
-        ])->name('transprter-types.transprters.index');
-        Route::post('/transprter-types/{transprterType}/transprters', [
-            TransprterTypeTransprtersController::class,
-            'store',
-        ])->name('transprter-types.transprters.store');
-
         Route::apiResource('users', UserController::class);
-
-        // User All Donation Detales
-        Route::get('/users/{user}/all-donation-detales', [
-            UserAllDonationDetalesController::class,
-            'index',
-        ])->name('users.all-donation-detales.index');
-        Route::post('/users/{user}/all-donation-detales', [
-            UserAllDonationDetalesController::class,
-            'store',
-        ])->name('users.all-donation-detales.store');
     });

@@ -24,7 +24,7 @@ class ItemFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'category_id' => \App\Models\Category::factory(),
+            'store_house_id' => \App\Models\StoreHouse::factory(),
         ];
     }
 }

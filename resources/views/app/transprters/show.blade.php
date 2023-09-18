@@ -30,27 +30,23 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
+                            @lang('crud.transprters.inputs.photo')
+                        </h5>
+                        <span>{{ $transprter->photo ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
                             @lang('crud.transprters.inputs.address')
                         </h5>
                         <span>{{ $transprter->address ?? '-' }}</span>
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
-                            @lang('crud.transprters.inputs.transprter_type_id')
+                            @lang('crud.transprters.inputs.order_id')
                         </h5>
                         <span
-                            >{{ optional($transprter->item)->name ?? '-'
-                            }}</span
+                            >{{ optional($transprter->order)->id ?? '-' }}</span
                         >
-                    </div>
-                    <div class="mb-4">
-                        <h5 class="font-medium text-gray-700">
-                            @lang('crud.transprters.inputs.photo')
-                        </h5>
-                        <x-partials.thumbnail
-                            src="{{ $transprter->photo ? \Storage::url($transprter->photo) : '' }}"
-                            size="150"
-                        />
                     </div>
                 </div>
 

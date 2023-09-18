@@ -24,8 +24,6 @@ class ItemDetailsFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'unit' => $this->faker->text(255),
-            'qtuantity' => $this->faker->randomNumber(),
             'item_id' => \App\Models\Item::factory(),
         ];
     }

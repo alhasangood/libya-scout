@@ -5,8 +5,6 @@ namespace Tests\Feature\Controllers;
 use App\Models\User;
 use App\Models\Order;
 
-use App\Models\Transprter;
-
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -66,11 +64,9 @@ class OrderControllerTest extends TestCase
 
         $response = $this->post(route('orders.store'), $data);
 
-        unset($data['id']);
-
         $this->assertDatabaseHas('orders', $data);
 
-        $order = Order::latest('orederNumber')->first();
+        $order = Order::latest('id')->first();
 
         $response->assertRedirect(route('orders.edit', $order));
     }
@@ -112,17 +108,15 @@ class OrderControllerTest extends TestCase
     {
         $order = Order::factory()->create();
 
-        $transprter = Transprter::factory()->create();
-
         $data = [
-            'transprter_id' => $transprter->id,
+            'orederNumber' => $this->faker->randomNumber(),
+            'from' => $this->faker->randomNumber(),
+            'to' => $this->faker->randomNumber(),
         ];
 
         $response = $this->put(route('orders.update', $order), $data);
 
-        unset($data['id']);
-
-        $data['orederNumber'] = $order->orederNumber;
+        $data['id'] = $order->id;
 
         $this->assertDatabaseHas('orders', $data);
 

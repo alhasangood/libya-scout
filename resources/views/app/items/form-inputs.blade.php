@@ -13,10 +13,10 @@
     </x-inputs.group>
 
     <x-inputs.group class="w-full">
-        <x-inputs.select name="category_id" label="Donation" required>
-            @php $selected = old('category_id', ($editing ? $item->category_id : '')) @endphp
-            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Category</option>
-            @foreach($categories as $value => $label)
+        <x-inputs.select name="store_house_id" label="Store House" required>
+            @php $selected = old('store_house_id', ($editing ? $item->store_house_id : '')) @endphp
+            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Store House</option>
+            @foreach($storeHouses as $value => $label)
             <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
             @endforeach
         </x-inputs.select>

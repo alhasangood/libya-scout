@@ -20,8 +20,10 @@ class DonationStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'description' => ['required', 'max:255', 'string'],
+            'name' => ['required', 'max:255', 'string'],
+            'status' => ['required', 'max:255'],
             'donation_detales_id' => ['required', 'exists:donation_detales,id'],
+            'order_id' => ['required', 'exists:orders,id'],
         ];
     }
 }

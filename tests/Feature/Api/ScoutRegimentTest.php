@@ -5,7 +5,8 @@ namespace Tests\Feature\Api;
 use App\Models\User;
 use App\Models\ScoutRegiment;
 
-use App\Models\ScoutCommission;
+use App\Models\Order;
+use App\Models\StoreHouse;
 
 use Tests\TestCase;
 use Laravel\Sanctum\Sanctum;
@@ -54,9 +55,6 @@ class ScoutRegimentTest extends TestCase
 
         $response = $this->postJson(route('api.scout-regiments.store'), $data);
 
-        unset($data['scout_regimentable_id']);
-        unset($data['scout_regimentable_type']);
-
         $this->assertDatabaseHas('scout_regiments', $data);
 
         $response->assertStatus(201)->assertJsonFragment($data);
@@ -69,21 +67,21 @@ class ScoutRegimentTest extends TestCase
     {
         $scoutRegiment = ScoutRegiment::factory()->create();
 
-        $scoutCommission = ScoutCommission::factory()->create();
+        $storeHouse = StoreHouse::factory()->create();
+        $order = Order::factory()->create();
 
         $data = [
             'name' => $this->faker->name(),
-            'phone_number' => $this->faker->randomNumber(),
-            'scout_commission_id' => $scoutCommission->id,
+            'phone' => $this->faker->randomNumber(),
+            'status' => $this->faker->randomNumber(),
+            'store_house_id' => $storeHouse->id,
+            'order_id' => $order->id,
         ];
 
         $response = $this->putJson(
             route('api.scout-regiments.update', $scoutRegiment),
             $data
         );
-
-        unset($data['scout_regimentable_id']);
-        unset($data['scout_regimentable_type']);
 
         $data['id'] = $scoutRegiment->id;
 

@@ -5,8 +5,6 @@ namespace Tests\Feature\Api;
 use App\Models\User;
 use App\Models\Order;
 
-use App\Models\Transprter;
-
 use Tests\TestCase;
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -40,7 +38,7 @@ class OrderTest extends TestCase
 
         $response = $this->getJson(route('api.orders.index'));
 
-        $response->assertOk()->assertSee($orders[0]->orederNumber);
+        $response->assertOk()->assertSee($orders[0]->id);
     }
 
     /**
@@ -54,8 +52,6 @@ class OrderTest extends TestCase
 
         $response = $this->postJson(route('api.orders.store'), $data);
 
-        unset($data['id']);
-
         $this->assertDatabaseHas('orders', $data);
 
         $response->assertStatus(201)->assertJsonFragment($data);
@@ -68,17 +64,15 @@ class OrderTest extends TestCase
     {
         $order = Order::factory()->create();
 
-        $transprter = Transprter::factory()->create();
-
         $data = [
-            'transprter_id' => $transprter->id,
+            'orederNumber' => $this->faker->randomNumber(),
+            'from' => $this->faker->randomNumber(),
+            'to' => $this->faker->randomNumber(),
         ];
 
         $response = $this->putJson(route('api.orders.update', $order), $data);
 
-        unset($data['id']);
-
-        $data['orederNumber'] = $order->orederNumber;
+        $data['id'] = $order->id;
 
         $this->assertDatabaseHas('orders', $data);
 

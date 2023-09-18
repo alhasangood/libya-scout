@@ -24,10 +24,9 @@ class UserStoreRequest extends FormRequest
             'name' => ['required', 'max:255', 'string'],
             'email' => ['required', 'unique:users,email', 'email'],
             'password' => ['required'],
-            'phone _number' => ['required', 'max:255', 'string'],
-            'userable_type' => ['required', 'max:255', 'string'],
-            'userable_id' => ['required', 'max:255'],
+            'phone_number' => ['required', 'max:255', 'string'],
             'roles' => 'array',
+            'scout_regiment_id' => ['required', 'exists:scout_regiments,id'],
         ];
     }
 }

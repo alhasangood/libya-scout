@@ -35,34 +35,45 @@
 
     <x-inputs.group class="w-full">
         <x-inputs.text
-            name="phone _number"
-            label="Phone Number"
-            :value="old('phone _number', ($editing ? $user->phone _number : ''))"
+            name="phone_number"
+            label="phone_number"
+            :value="old('phone_number', ($editing ? $user->phone_number : ''))"
             maxlength="255"
-            placeholder="Phone Number"
+            placeholder="phone_number"
             required
         ></x-inputs.text>
     </x-inputs.group>
+    {{-- <x-inputs.group class="w-full">
+        <x-inputs.select name="user_id" label="User" required>
+            @php $selected = old('user_id', ($editing ? $scoutCommission->user_id : '')) @endphp
+            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the User</option>
+            @foreach($users as $value => $label)
+            <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
+            @endforeach
+        </x-inputs.select>
+    </x-inputs.group> --}}
 
-    <x-inputs.group class="w-full">
-        <x-inputs.checkbox
-            name="userable_type"
-            label="Userable Type"
-            :checked="old('userable_type', ($editing ? $user->userable_type : 0))"
-        ></x-inputs.checkbox>
-    </x-inputs.group>
-
-    <x-inputs.group class="w-full">
-        <x-inputs.select name="userable_id" label="تابعية">
-            @php $selected = old('userable_id', ($editing ? $user->userable_id : '')) @endphp
+   <x-inputs.group class="w-full">
+        <x-inputs.select
+            name="scout_regiment_id"
+            label="Scout Regiment"
+            required
+        >
+            @php $selected = old('scout_regiment_id', ($editing ? $user->id : '')) @endphp
+            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Scout Regiment</option>
+            @foreach($scoutRegiments as $value => $label)
+            <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
+            @endforeach
         </x-inputs.select>
     </x-inputs.group>
+
 
     <div class="px-4 my-4">
         <h4 class="font-bold text-lg text-gray-700">
             Assign @lang('crud.roles.name')
         </h4>
 
+ 
         <div class="py-2">
             @foreach ($roles as $role)
             <div>

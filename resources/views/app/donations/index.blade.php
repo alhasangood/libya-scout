@@ -54,10 +54,16 @@
                         <thead class="text-gray-700">
                             <tr>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.donations.inputs.description')
+                                    @lang('crud.donations.inputs.name')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.donations.inputs.status')
                                 </th>
                                 <th class="px-4 py-3 text-left">
                                     @lang('crud.donations.inputs.donation_detales_id')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.donations.inputs.order_id')
                                 </th>
                                 <th></th>
                             </tr>
@@ -66,12 +72,18 @@
                             @forelse($donations as $donation)
                             <tr class="hover:bg-gray-50">
                                 <td class="px-4 py-3 text-left">
-                                    {{ $donation->description ?? '-' }}
+                                    {{ $donation->name ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $donation->status ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{
                                     optional($donation->donationDetales)->name
                                     ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ optional($donation->order)->id ?? '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -138,7 +150,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="3">
+                                <td colspan="5">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -146,7 +158,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="3">
+                                <td colspan="5">
                                     <div class="mt-10 px-4">
                                         {!! $donations->render() !!}
                                     </div>

@@ -11,7 +11,7 @@ class DonationEntity extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'status'];
 
     protected $searchableFields = ['*'];
 

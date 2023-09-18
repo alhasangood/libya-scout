@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-use Laravel\Sanctum\HasApiTokens;
 use App\Models\Scopes\Searchable;
+use Laravel\Sanctum\HasApiTokens;
 use App\Models\Traits\FilamentTrait;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -21,15 +22,8 @@ class User extends Authenticatable implements FilamentUser
     use HasApiTokens;
     use FilamentTrait;
 
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'phone _number',
-        'roll_id',
-        'userable_id',
-        'userable_type',
-    ];
+    protected $fillable = ['name', 'email', 'password', 'phone_number'  , 
+    'scout_regiment_id'];
 
     protected $searchableFields = ['*'];
 
@@ -39,34 +33,25 @@ class User extends Authenticatable implements FilamentUser
         'email_verified_at' => 'datetime',
     ];
 
-    public function roll()
-    {
-        return $this->belongsTo(Roll::class);
-    }
+    
+    // public function userable(): MorphTo
+    // {
+    
+    //     return $this->morphTo(__FUNCTION__, 'userable_type', 'userable_id');
+    // }
 
-    public function allDonationDetales()
+    public function order()
     {
-        return $this->hasMany(DonationDetales::class);
-    }
-
-    public function scoutRegiment()
-    {
-        return $this->morphOne(ScoutRegiment::class, 'scout_regimentable');
+        return $this->hasOne(Roll::class, 'user_id');
     }
 
     public function scoutCommission()
     {
-        return $this->morphOne(ScoutCommission::class, 'scout_commissionable');
+        return $this->hasOne(ScoutCommission::class);
     }
-
     public function scoutRegiment()
     {
-        return $this->morphOne(ScoutRegiment::class, 'scout_regimentable');
-    }
-
-    public function userable()
-    {
-        return $this->morphTo();
+        return $this->hasOne(ScoutRegiment::class);
     }
 
     public function isSuperAdmin(): bool

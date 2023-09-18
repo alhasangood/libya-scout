@@ -24,17 +24,32 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
-                            @lang('crud.scout_regiments.inputs.phone_number')
+                            @lang('crud.scout_regiments.inputs.phone')
                         </h5>
-                        <span>{{ $scoutRegiment->phone_number ?? '-' }}</span>
+                        <span>{{ $scoutRegiment->phone ?? '-' }}</span>
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
-                            @lang('crud.scout_regiments.inputs.scout_commission_id')
+                            @lang('crud.scout_regiments.inputs.status')
+                        </h5>
+                        <span>{{ $scoutRegiment->status ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.scout_regiments.inputs.store_house_id')
                         </h5>
                         <span
-                            >{{ optional($scoutRegiment->scoutCommission)->name
-                            ?? '-' }}</span
+                            >{{ optional($scoutRegiment->storeHouse)->name ??
+                            '-' }}</span
+                        >
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.scout_regiments.inputs.order_id')
+                        </h5>
+                        <span
+                            >{{ optional($scoutRegiment->order)->id ?? '-'
+                            }}</span
                         >
                     </div>
                 </div>

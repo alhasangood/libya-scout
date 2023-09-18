@@ -4,8 +4,6 @@ namespace Tests\Feature\Controllers;
 
 use App\Models\User;
 
-use App\Models\Roll;
-
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -68,7 +66,6 @@ class UserControllerTest extends TestCase
 
         unset($data['password']);
         unset($data['email_verified_at']);
-        unset($data['roll_id']);
 
         $this->assertDatabaseHas('users', $data);
 
@@ -114,13 +111,10 @@ class UserControllerTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $roll = Roll::factory()->create();
-
         $data = [
             'name' => $this->faker->name(),
             'email' => $this->faker->unique->email(),
-            'phone _number' => $this->faker->text(255),
-            'roll_id' => $roll->id,
+            'phone number' => $this->faker->text(255),
         ];
 
         $data['password'] = \Str::random('8');
@@ -129,7 +123,6 @@ class UserControllerTest extends TestCase
 
         unset($data['password']);
         unset($data['email_verified_at']);
-        unset($data['roll_id']);
 
         $data['id'] = $user->id;
 

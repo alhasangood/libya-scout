@@ -23,7 +23,9 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'transprter_id' => \App\Models\Transprter::factory(),
+            'orederNumber' => $this->faker->randomNumber(),
+            'from' => $this->faker->randomNumber(),
+            'to' => $this->faker->randomNumber(),
         ];
     }
 }

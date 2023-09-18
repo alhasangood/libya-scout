@@ -22,6 +22,12 @@
                         </h5>
                         <span>{{ $roll->name ?? '-' }}</span>
                     </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.rolls.inputs.user_id')
+                        </h5>
+                        <span>{{ optional($roll->user)->name ?? '-' }}</span>
+                    </div>
                 </div>
 
                 <div class="mt-10">

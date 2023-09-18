@@ -17,6 +17,8 @@ return new class extends Migration {
                 ->on('scout_commissions')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
+
+          
         });
     }
 

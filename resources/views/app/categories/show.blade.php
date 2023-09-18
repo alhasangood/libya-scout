@@ -18,9 +18,20 @@
                 <div class="mt-4 px-4">
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
-                            @lang('crud.categories.inputs.name')
+                            @lang('crud.categories.inputs.donation_id')
                         </h5>
-                        <span>{{ $category->name ?? '-' }}</span>
+                        <span
+                            >{{ optional($category->donation)->name ?? '-'
+                            }}</span
+                        >
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.categories.inputs.item_id')
+                        </h5>
+                        <span
+                            >{{ optional($category->item)->name ?? '-' }}</span
+                        >
                     </div>
                 </div>
 

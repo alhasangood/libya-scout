@@ -20,7 +20,6 @@
                 <x-form
                     method="POST"
                     action="{{ route('all-donation-detales.store') }}"
-                    has-files
                     class="mt-4"
                 >
                     @include('app.all_donation_detales.form-inputs')

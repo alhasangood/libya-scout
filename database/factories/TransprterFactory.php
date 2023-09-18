@@ -27,6 +27,8 @@ class TransprterFactory extends Factory
             'identity' => $this->faker->text(255),
             'photo' => $this->faker->word(),
             'address' => $this->faker->text(255),
+            'order_id' => \App\Models\Order::factory(),
+            
             'transprter_type_id' => \App\Models\TransprterType::factory(),
         ];
     }

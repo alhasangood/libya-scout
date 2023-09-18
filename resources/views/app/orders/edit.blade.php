@@ -50,20 +50,6 @@
                     </div>
                 </x-form>
             </x-partials.card>
-
-            @can('view-any', App\Models\Item::class)
-            <x-partials.card class="mt-5">
-                <x-slot name="title"> Items </x-slot>
-
-                <livewire:order-items-detail :order="$order" />
-            </x-partials.card>
-            @endcan @can('view-any', App\Models\StoreHouse::class)
-            <x-partials.card class="mt-5">
-                <x-slot name="title"> Store Houses </x-slot>
-
-                <livewire:order-store-houses-detail :order="$order" />
-            </x-partials.card>
-            @endcan
         </div>
     </div>
 </x-app-layout>

@@ -11,7 +11,7 @@ class ItemDetails extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['item_id', 'name', 'unit', 'qtuantity'];
+    protected $fillable = ['item_id', 'name'];
 
     protected $searchableFields = ['*'];
 

@@ -28,15 +28,8 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => \Hash::make('password'),
             'remember_token' => Str::random(10),
-            'phone _number' => $this->faker->text(255),
-            'roll_id' => \App\Models\Roll::factory(),
-            'userable_type' => $this->faker->randomElement([
-                \App\Models\ScoutRegiment::class,
-                \App\Models\ScoutCommission::class,
-            ]),
-            'userable_id' => function (array $item) {
-                return app($item['userable_type'])->factory();
-            },
+            'scout_regiment_id'=>1,
+            'phone_number' => $this->faker->text(255),
         ];
     }
 

@@ -13,38 +13,32 @@ class ScoutRegiment extends Model
 
     protected $fillable = [
         'name',
-        'phone_number',
-        'scout_regimentable_id',
-        'scout_regimentable_type',
+        'phone',
+        'status',
         'scout_commission_id',
+       
     ];
 
     protected $searchableFields = ['*'];
 
     protected $table = 'scout_regiments';
 
+    public function storeHouse()
+    {
+        return $this->belongsTo(StoreHouse::class);
+    }
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     public function scoutCommission()
     {
         return $this->belongsTo(ScoutCommission::class);
-    }
-
-    public function storeHouses()
-    {
-        return $this->morphMany(StoreHouse::class, 'store_houseable');
-    }
-
-    public function users()
-    {
-        return $this->morphMany(User::class, 'userable');
-    }
-
-    public function storeHouses()
-    {
-        return $this->morphMany(StoreHouse::class, 'store_houseable');
-    }
-
-    public function scout_regimentable()
-    {
-        return $this->morphTo();
     }
 }

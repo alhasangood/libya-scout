@@ -44,7 +44,7 @@ class DonationDetalesDonationsTest extends TestCase
             route('api.all-donation-detales.donations.index', $donationDetales)
         );
 
-        $response->assertOk()->assertSee($donations[0]->description);
+        $response->assertOk()->assertSee($donations[0]->name);
     }
 
     /**
@@ -63,10 +63,6 @@ class DonationDetalesDonationsTest extends TestCase
             route('api.all-donation-detales.donations.store', $donationDetales),
             $data
         );
-
-        unset($data['qtuantity']);
-        unset($data['item_id']);
-        unset($data['store_house_id']);
 
         $this->assertDatabaseHas('donations', $data);
 

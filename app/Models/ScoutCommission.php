@@ -2,8 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\User;
+use App\Models\Order;
+use App\Models\StoreHouse;
+use App\Models\ScoutRegiment;
 use App\Models\Scopes\Searchable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ScoutCommission extends Model
@@ -13,32 +18,40 @@ class ScoutCommission extends Model
 
     protected $fillable = [
         'name',
-        'phone_number',
-        'scout_commissionable_id',
-        'scout_commissionable_type',
+        'phone',
+        'status',
+        // 'store_house_id',
+        // 'order_id',
+        // 'user_id',
+        // 'scout_regiment_id',
     ];
 
     protected $searchableFields = ['*'];
 
     protected $table = 'scout_commissions';
 
-    public function scoutRegiments()
+    public function storeHouse()
     {
-        return $this->hasMany(ScoutRegiment::class);
+        return $this->belongsTo(StoreHouse::class);
     }
 
-    public function users()
+    public function order()
     {
-        return $this->morphMany(User::class, 'userable');
+        return $this->belongsTo(Order::class);
     }
 
-    public function storeHouses()
+    public function user()
     {
-        return $this->morphMany(StoreHouse::class, 'store_houseable');
+        return $this->belongsTo(User::class);
     }
 
-    public function scout_commissionable()
+    public function scoutRegiment()
     {
-        return $this->morphTo();
+        return $this->belongsTo(ScoutRegiment::class);
+    }
+
+    public function users(): MorphOne
+    {
+        return $this->morphOne(user::class, 'userable');
     }
 }

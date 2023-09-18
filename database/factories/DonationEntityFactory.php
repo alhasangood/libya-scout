@@ -24,6 +24,7 @@ class DonationEntityFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
+            'status' => $this->faker->randomNumber(),
         ];
     }
 }

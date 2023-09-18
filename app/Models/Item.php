@@ -11,18 +11,13 @@ class Item extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['name', 'category_id'];
+    protected $fillable = ['name', 'store_house_id'];
 
     protected $searchableFields = ['*'];
 
-    public function donation()
+    public function categories()
     {
-        return $this->belongsTo(Category::class, 'category_id');
-    }
-
-    public function donations()
-    {
-        return $this->hasMany(Donation::class);
+        return $this->hasMany(Category::class);
     }
 
     public function allItemDetails()
@@ -30,8 +25,8 @@ class Item extends Model
         return $this->hasMany(ItemDetails::class);
     }
 
-    public function orders()
+    public function storeHouse()
     {
-        return $this->belongsToMany(Order::class);
+        return $this->belongsTo(StoreHouse::class);
     }
 }

@@ -5,7 +5,7 @@ namespace Tests\Feature\Api;
 use App\Models\User;
 use App\Models\Item;
 
-use App\Models\Category;
+use App\Models\StoreHouse;
 
 use Tests\TestCase;
 use Laravel\Sanctum\Sanctum;
@@ -66,11 +66,11 @@ class ItemTest extends TestCase
     {
         $item = Item::factory()->create();
 
-        $category = Category::factory()->create();
+        $storeHouse = StoreHouse::factory()->create();
 
         $data = [
             'name' => $this->faker->name(),
-            'category_id' => $category->id,
+            'store_house_id' => $storeHouse->id,
         ];
 
         $response = $this->putJson(route('api.items.update', $item), $data);

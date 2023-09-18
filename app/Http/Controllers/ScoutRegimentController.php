@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\View\View;
+use App\Models\StoreHouse;
 use Illuminate\Http\Request;
 use App\Models\ScoutRegiment;
 use App\Models\ScoutCommission;
@@ -39,9 +41,12 @@ class ScoutRegimentController extends Controller
     {
         $this->authorize('create', ScoutRegiment::class);
 
-        $scoutCommissions = ScoutCommission::pluck('name', 'id');
-
-        return view('app.scout_regiments.create', compact('scoutCommissions'));
+       
+        $scoutCommission = ScoutCommission::pluck('name', 'id');
+        return view(
+            'app.scout_regiments.create',
+            compact('scoutCommission', )
+        );
     }
 
     /**
@@ -76,12 +81,12 @@ class ScoutRegimentController extends Controller
     public function edit(Request $request, ScoutRegiment $scoutRegiment): View
     {
         $this->authorize('update', $scoutRegiment);
-
-        $scoutCommissions = ScoutCommission::pluck('name', 'id');
+        $scoutCommission = ScoutCommission::pluck('name', 'id');
+      
 
         return view(
             'app.scout_regiments.edit',
-            compact('scoutRegiment', 'scoutCommissions')
+            compact('scoutRegiment', 'scoutCommission')
         );
     }
 

@@ -56,12 +56,6 @@
                                 <th class="px-4 py-3 text-left">
                                     @lang('crud.store_houses.inputs.name')
                                 </th>
-                                <th class="px-4 py-3 text-left">
-                                    @lang('crud.store_houses.inputs.store_houseable_type')
-                                </th>
-                                <th class="px-4 py-3 text-left">
-                                    @lang('crud.store_houses.inputs.store_houseable_id')
-                                </th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -70,13 +64,6 @@
                             <tr class="hover:bg-gray-50">
                                 <td class="px-4 py-3 text-left">
                                     {{ $storeHouse->name ?? '-' }}
-                                </td>
-                                <td class="px-4 py-3 text-left">
-                                    {{ $storeHouse->store_houseable_type ?? '-'
-                                    }}
-                                </td>
-                                <td class="px-4 py-3 text-left">
-                                    {{ $storeHouse->store_houseable_id ?? '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -143,7 +130,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="4">
+                                <td colspan="2">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -151,7 +138,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="4">
+                                <td colspan="2">
                                     <div class="mt-10 px-4">
                                         {!! $storeHouses->render() !!}
                                     </div>

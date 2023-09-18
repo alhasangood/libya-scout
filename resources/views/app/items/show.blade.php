@@ -24,10 +24,11 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
-                            @lang('crud.items.inputs.category_id')
+                            @lang('crud.items.inputs.store_house_id')
                         </h5>
                         <span
-                            >{{ optional($item->donation)->name ?? '-' }}</span
+                            >{{ optional($item->storeHouse)->name ?? '-'
+                            }}</span
                         >
                     </div>
                 </div>

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use App\Models\Category;
+use App\Models\Donation;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -35,7 +37,10 @@ class CategoryController extends Controller
     {
         $this->authorize('create', Category::class);
 
-        return view('app.categories.create');
+        $donations = Donation::pluck('name', 'id');
+        $items = Item::pluck('name', 'id');
+
+        return view('app.categories.create', compact('donations', 'items'));
     }
 
     /**
@@ -71,7 +76,13 @@ class CategoryController extends Controller
     {
         $this->authorize('update', $category);
 
-        return view('app.categories.edit', compact('category'));
+        $donations = Donation::pluck('name', 'id');
+        $items = Item::pluck('name', 'id');
+
+        return view(
+            'app.categories.edit',
+            compact('category', 'donations', 'items')
+        );
     }
 
     /**

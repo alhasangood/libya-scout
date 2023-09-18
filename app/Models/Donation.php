@@ -11,28 +11,22 @@ class Donation extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = [
-        'description',
-        'qtuantity',
-        'donation_detales_id',
-        'item_id',
-        'store_house_id',
-    ];
+    protected $fillable = ['name', 'status', 'donation_detales_id', 'order_id'];
 
     protected $searchableFields = ['*'];
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
+    }
 
     public function donationDetales()
     {
         return $this->belongsTo(DonationDetales::class);
     }
 
-    public function item()
+    public function order()
     {
-        return $this->belongsTo(Item::class);
-    }
-
-    public function storeHouse()
-    {
-        return $this->belongsTo(StoreHouse::class);
+        return $this->belongsTo(Order::class);
     }
 }

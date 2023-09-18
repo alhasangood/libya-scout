@@ -5,6 +5,8 @@ namespace Tests\Feature\Controllers;
 use App\Models\User;
 use App\Models\TransprterType;
 
+use App\Models\Transprter;
+
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -64,8 +66,6 @@ class TransprterTypeControllerTest extends TestCase
 
         $response = $this->post(route('transprter-types.store'), $data);
 
-        unset($data['status']);
-
         $this->assertDatabaseHas('transprter_types', $data);
 
         $transprterType = TransprterType::latest('id')->first();
@@ -112,17 +112,18 @@ class TransprterTypeControllerTest extends TestCase
     {
         $transprterType = TransprterType::factory()->create();
 
+        $transprter = Transprter::factory()->create();
+
         $data = [
             'name' => $this->faker->text(255),
             'status' => $this->faker->randomNumber(),
+            'transprter_id' => $transprter->id,
         ];
 
         $response = $this->put(
             route('transprter-types.update', $transprterType),
             $data
         );
-
-        unset($data['status']);
 
         $data['id'] = $transprterType->id;
 

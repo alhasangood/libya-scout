@@ -13,13 +13,9 @@ return new class extends Migration {
         Schema::create('scout_regiments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->bigInteger('phone_number');
-            $table->unsignedBigInteger('scout_regimentable_id');
-            $table->string('scout_regimentable_type');
+            $table->bigInteger('phone');
+            $table->bigInteger('status');
             $table->unsignedBigInteger('scout_commission_id');
-
-            $table->index('scout_regimentable_id');
-            $table->index('scout_regimentable_type');
 
             $table->timestamps();
         });

@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->string('identity');
             $table->binary('photo')->nullable();
             $table->string('address');
+            $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('transprter_type_id');
-
             $table->timestamps();
         });
     }

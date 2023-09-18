@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Transprter;
 use Illuminate\Support\Str;
 use App\Models\TransprterType;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -27,4 +28,6 @@ class TransprterTypeFactory extends Factory
             'status' => $this->faker->randomNumber(),
         ];
     }
+  
+    
 }

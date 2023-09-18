@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Roll;
+use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -35,7 +36,9 @@ class RollController extends Controller
     {
         $this->authorize('create', Roll::class);
 
-        return view('app.rolls.create');
+        $users = User::pluck('name', 'id');
+
+        return view('app.rolls.create', compact('users'));
     }
 
     /**
@@ -71,7 +74,9 @@ class RollController extends Controller
     {
         $this->authorize('update', $roll);
 
-        return view('app.rolls.edit', compact('roll'));
+        $users = User::pluck('name', 'id');
+
+        return view('app.rolls.edit', compact('roll', 'users'));
     }
 
     /**

@@ -34,7 +34,9 @@ class DonationDetalesDonationsController extends Controller
         $this->authorize('create', Donation::class);
 
         $validated = $request->validate([
-            'description' => ['required', 'max:255', 'string'],
+            'name' => ['required', 'max:255', 'string'],
+            'status' => ['required', 'max:255'],
+            'order_id' => ['required', 'exists:orders,id'],
         ]);
 
         $donation = $donationDetales->donations()->create($validated);

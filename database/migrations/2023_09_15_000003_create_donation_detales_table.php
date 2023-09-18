@@ -12,12 +12,11 @@ return new class extends Migration {
     {
         Schema::create('donation_detales', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('donation_entity_id');
             $table->string('name');
             $table->string('person');
             $table->binary('logo');
-            $table->bigInteger('phone_number');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('donation_entity_id');
+            $table->bigInteger('number');
 
             $table->timestamps();
         });

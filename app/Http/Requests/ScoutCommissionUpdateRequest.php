@@ -21,7 +21,12 @@ class ScoutCommissionUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:255', 'string'],
-            'phone_number' => ['required', 'max:255'],
+            'phone' => ['required', 'max:255'],
+            'status' => ['required', 'max:255'],
+            'store_house_id' => ['required', 'exists:store_houses,id'],
+            'order_id' => ['required', 'exists:orders,id'],
+            'user_id' => ['required', 'exists:users,id'],
+            'scout_regiment_id' => ['required', 'exists:scout_regiments,id'],
         ];
     }
 }

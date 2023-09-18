@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\View\View;
+use App\Models\Transprter;
 use Illuminate\Http\Request;
 use App\Models\TransprterType;
 use Illuminate\Http\RedirectResponse;
@@ -37,6 +38,8 @@ class TransprterTypeController extends Controller
     public function create(Request $request): View
     {
         $this->authorize('create', TransprterType::class);
+
+    
 
         return view('app.transprter_types.create');
     }
@@ -74,7 +77,11 @@ class TransprterTypeController extends Controller
     {
         $this->authorize('update', $transprterType);
 
-        return view('app.transprter_types.edit', compact('transprterType'));
+       
+        return view(
+            'app.transprter_types.edit',
+            compact('transprterType', )
+        );
     }
 
     /**

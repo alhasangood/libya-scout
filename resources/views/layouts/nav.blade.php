@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('home') }}" class="font-bold text-blue-500 text-lg">
-                        libya
+                        libya_W
                     </a>
                 </div>
 

@@ -24,6 +24,7 @@ class RollFactory extends Factory
     {
         return [
             'name' => $this->faker->text(255),
+            'user_id' => \App\Models\User::factory(),
         ];
     }
 }

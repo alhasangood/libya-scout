@@ -12,12 +12,11 @@ class DonationDetales extends Model
     use Searchable;
 
     protected $fillable = [
+        'donation_entity_id',
         'name',
         'person',
         'logo',
-        'phone_number',
-        'user_id',
-        'donation_entity_id',
+        'number',
     ];
 
     protected $searchableFields = ['*'];
@@ -27,11 +26,6 @@ class DonationDetales extends Model
     public function donations()
     {
         return $this->hasMany(Donation::class);
-    }
-
-    public function user()
-    {
-        return $this->belongsTo(User::class);
     }
 
     public function donationEntity()

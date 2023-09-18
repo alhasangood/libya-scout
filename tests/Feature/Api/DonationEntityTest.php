@@ -69,6 +69,7 @@ class DonationEntityTest extends TestCase
 
         $data = [
             'name' => $this->faker->name(),
+            'status' => $this->faker->randomNumber(),
         ];
 
         $response = $this->putJson(

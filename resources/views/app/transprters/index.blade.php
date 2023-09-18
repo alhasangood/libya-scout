@@ -60,13 +60,13 @@
                                     @lang('crud.transprters.inputs.identity')
                                 </th>
                                 <th class="px-4 py-3 text-left">
+                                    @lang('crud.transprters.inputs.photo')
+                                </th>
+                                <th class="px-4 py-3 text-left">
                                     @lang('crud.transprters.inputs.address')
                                 </th>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.transprters.inputs.transprter_type_id')
-                                </th>
-                                <th class="px-4 py-3 text-left">
-                                    @lang('crud.transprters.inputs.photo')
+                                    @lang('crud.transprters.inputs.order_id')
                                 </th>
                                 <th></th>
                             </tr>
@@ -81,16 +81,14 @@
                                     {{ $transprter->identity ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
+                                    {{ $transprter->photo ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
                                     {{ $transprter->address ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
-                                    {{ optional($transprter->item)->name ?? '-'
+                                    {{ optional($transprter->order)->id ?? '-'
                                     }}
-                                </td>
-                                <td class="px-4 py-3 text-left">
-                                    <x-partials.thumbnail
-                                        src="{{ $transprter->photo ? \Storage::url($transprter->photo) : '' }}"
-                                    />
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"

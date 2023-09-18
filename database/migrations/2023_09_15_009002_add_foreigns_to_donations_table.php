@@ -19,16 +19,9 @@ return new class extends Migration {
                 ->onDelete('CASCADE');
 
             $table
-                ->foreign('item_id')
+                ->foreign('order_id')
                 ->references('id')
-                ->on('items')
-                ->onUpdate('CASCADE')
-                ->onDelete('CASCADE');
-
-            $table
-                ->foreign('store_house_id')
-                ->references('id')
-                ->on('store_houses')
+                ->on('orders')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
         });
@@ -41,8 +34,7 @@ return new class extends Migration {
     {
         Schema::table('donations', function (Blueprint $table) {
             $table->dropForeign(['donation_detales_id']);
-            $table->dropForeign(['item_id']);
-            $table->dropForeign(['store_house_id']);
+            $table->dropForeign(['order_id']);
         });
     }
 };

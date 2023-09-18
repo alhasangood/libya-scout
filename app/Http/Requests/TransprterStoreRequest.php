@@ -22,9 +22,10 @@ class TransprterStoreRequest extends FormRequest
         return [
             'name' => ['required', 'max:255', 'string'],
             'identity' => ['required', 'max:255', 'string'],
+            'photo' => ['nullable', 'max:255'],
             'address' => ['required', 'max:255', 'string'],
+            'order_id' => ['required', 'exists:orders,id'],
             'transprter_type_id' => ['required', 'exists:transprter_types,id'],
-            'photo' => ['image', 'max:1024', 'nullable'],
         ];
     }
 }

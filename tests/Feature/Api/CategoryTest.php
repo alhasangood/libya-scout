@@ -5,6 +5,9 @@ namespace Tests\Feature\Api;
 use App\Models\User;
 use App\Models\Category;
 
+use App\Models\Item;
+use App\Models\Donation;
+
 use Tests\TestCase;
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -38,7 +41,7 @@ class CategoryTest extends TestCase
 
         $response = $this->getJson(route('api.categories.index'));
 
-        $response->assertOk()->assertSee($categories[0]->name);
+        $response->assertOk()->assertSee($categories[0]->id);
     }
 
     /**
@@ -64,8 +67,12 @@ class CategoryTest extends TestCase
     {
         $category = Category::factory()->create();
 
+        $donation = Donation::factory()->create();
+        $item = Item::factory()->create();
+
         $data = [
-            'name' => $this->faker->name(),
+            'donation_id' => $donation->id,
+            'item_id' => $item->id,
         ];
 
         $response = $this->putJson(

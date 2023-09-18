@@ -20,7 +20,6 @@
                 <x-form
                     method="PUT"
                     action="{{ route('all-donation-detales.update', $donationDetales) }}"
-                    has-files
                     class="mt-4"
                 >
                     @include('app.all_donation_detales.form-inputs')

@@ -22,23 +22,6 @@
                         </h5>
                         <span>{{ $storeHouse->name ?? '-' }}</span>
                     </div>
-                    <div class="mb-4">
-                        <h5 class="font-medium text-gray-700">
-                            @lang('crud.store_houses.inputs.store_houseable_type')
-                        </h5>
-                        <span
-                            >{{ $storeHouse->store_houseable_type ?? '-'
-                            }}</span
-                        >
-                    </div>
-                    <div class="mb-4">
-                        <h5 class="font-medium text-gray-700">
-                            @lang('crud.store_houses.inputs.store_houseable_id')
-                        </h5>
-                        <span
-                            >{{ $storeHouse->store_houseable_id ?? '-' }}</span
-                        >
-                    </div>
                 </div>
 
                 <div class="mt-10">

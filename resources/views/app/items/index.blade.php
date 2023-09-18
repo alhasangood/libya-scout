@@ -55,7 +55,7 @@
                                     @lang('crud.items.inputs.name')
                                 </th>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.items.inputs.category_id')
+                                    @lang('crud.items.inputs.store_house_id')
                                 </th>
                                 <th></th>
                             </tr>
@@ -67,7 +67,8 @@
                                     {{ $item->name ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
-                                    {{ optional($item->donation)->name ?? '-' }}
+                                    {{ optional($item->storeHouse)->name ?? '-'
+                                    }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"

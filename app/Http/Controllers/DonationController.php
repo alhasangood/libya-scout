@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use App\Models\Donation;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -37,8 +38,12 @@ class DonationController extends Controller
         $this->authorize('create', Donation::class);
 
         $allDonationDetales = DonationDetales::pluck('name', 'id');
+        $orders = Order::pluck('id', 'id');
 
-        return view('app.donations.create', compact('allDonationDetales'));
+        return view(
+            'app.donations.create',
+            compact('allDonationDetales', 'orders')
+        );
     }
 
     /**
@@ -75,10 +80,11 @@ class DonationController extends Controller
         $this->authorize('update', $donation);
 
         $allDonationDetales = DonationDetales::pluck('name', 'id');
+        $orders = Order::pluck('id', 'id');
 
         return view(
             'app.donations.edit',
-            compact('donation', 'allDonationDetales')
+            compact('donation', 'allDonationDetales', 'orders')
         );
     }
 

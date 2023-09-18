@@ -21,6 +21,8 @@ class TransprterTypeUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:255', 'string'],
+            'status' => ['required', 'max:255'],
+        
         ];
     }
 }

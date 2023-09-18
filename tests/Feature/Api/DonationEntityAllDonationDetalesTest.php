@@ -70,8 +70,6 @@ class DonationEntityAllDonationDetalesTest extends TestCase
             $data
         );
 
-        unset($data['user_id']);
-
         $this->assertDatabaseHas('donation_detales', $data);
 
         $response->assertStatus(201)->assertJsonFragment($data);

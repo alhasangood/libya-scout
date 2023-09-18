@@ -66,8 +66,6 @@ class DonationDetalesControllerTest extends TestCase
 
         $response = $this->post(route('all-donation-detales.store'), $data);
 
-        unset($data['user_id']);
-
         $this->assertDatabaseHas('donation_detales', $data);
 
         $donationDetales = DonationDetales::latest('id')->first();
@@ -118,15 +116,13 @@ class DonationDetalesControllerTest extends TestCase
     {
         $donationDetales = DonationDetales::factory()->create();
 
-        $user = User::factory()->create();
         $donationEntity = DonationEntity::factory()->create();
 
         $data = [
             'name' => $this->faker->name(),
             'person' => $this->faker->text(255),
             'logo' => $this->faker->word(),
-            'phone_number' => $this->faker->randomNumber(),
-            'user_id' => $user->id,
+            'number' => $this->faker->randomNumber(),
             'donation_entity_id' => $donationEntity->id,
         ];
 
@@ -134,8 +130,6 @@ class DonationDetalesControllerTest extends TestCase
             route('all-donation-detales.update', $donationDetales),
             $data
         );
-
-        unset($data['user_id']);
 
         $data['id'] = $donationDetales->id;
 

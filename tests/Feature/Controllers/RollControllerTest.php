@@ -108,8 +108,11 @@ class RollControllerTest extends TestCase
     {
         $roll = Roll::factory()->create();
 
+        $user = User::factory()->create();
+
         $data = [
             'name' => $this->faker->text(255),
+            'user_id' => $user->id,
         ];
 
         $response = $this->put(route('rolls.update', $roll), $data);

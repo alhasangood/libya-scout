@@ -17,8 +17,8 @@ class TransprterType extends Model
 
     protected $table = 'transprter_types';
 
-    public function transprters()
+    public function transprter()
     {
-        return $this->hasMany(Transprter::class);
+        return $this->belongsTo(Transprter::class);
     }
 }

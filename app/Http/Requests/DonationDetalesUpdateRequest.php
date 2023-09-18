@@ -20,11 +20,11 @@ class DonationDetalesUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'donation_entity_id' => ['required', 'exists:donation_entities,id'],
             'name' => ['required', 'max:255', 'string'],
             'person' => ['required', 'max:255', 'string'],
-            'phone_number' => ['required', 'max:255'],
-            'donation_entity_id' => ['required', 'exists:donation_entities,id'],
-            'logo' => ['image', 'max:1024', 'required'],
+            'logo' => ['required', 'max:255'],
+            'number' => ['required', 'max:255'],
         ];
     }
 }

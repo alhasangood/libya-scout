@@ -5,7 +5,8 @@ namespace Tests\Feature\Controllers;
 use App\Models\User;
 use App\Models\ScoutRegiment;
 
-use App\Models\ScoutCommission;
+use App\Models\Order;
+use App\Models\StoreHouse;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -66,9 +67,6 @@ class ScoutRegimentControllerTest extends TestCase
 
         $response = $this->post(route('scout-regiments.store'), $data);
 
-        unset($data['scout_regimentable_id']);
-        unset($data['scout_regimentable_type']);
-
         $this->assertDatabaseHas('scout_regiments', $data);
 
         $scoutRegiment = ScoutRegiment::latest('id')->first();
@@ -115,21 +113,21 @@ class ScoutRegimentControllerTest extends TestCase
     {
         $scoutRegiment = ScoutRegiment::factory()->create();
 
-        $scoutCommission = ScoutCommission::factory()->create();
+        $storeHouse = StoreHouse::factory()->create();
+        $order = Order::factory()->create();
 
         $data = [
             'name' => $this->faker->name(),
-            'phone_number' => $this->faker->randomNumber(),
-            'scout_commission_id' => $scoutCommission->id,
+            'phone' => $this->faker->randomNumber(),
+            'status' => $this->faker->randomNumber(),
+            'store_house_id' => $storeHouse->id,
+            'order_id' => $order->id,
         ];
 
         $response = $this->put(
             route('scout-regiments.update', $scoutRegiment),
             $data
         );
-
-        unset($data['scout_regimentable_id']);
-        unset($data['scout_regimentable_type']);
 
         $data['id'] = $scoutRegiment->id;
 

@@ -58,13 +58,7 @@
                                     @lang('crud.users.inputs.email')
                                 </th>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.users.inputs.phone _number')
-                                </th>
-                                <th class="px-4 py-3 text-left">
-                                    @lang('crud.users.inputs.userable_type')
-                                </th>
-                                <th class="px-4 py-3 text-left">
-                                    @lang('crud.users.inputs.userable_id')
+                                    @lang('crud.users.inputs.phone_number')
                                 </th>
                                 <th></th>
                             </tr>
@@ -79,13 +73,7 @@
                                     {{ $user->email ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
-                                    {{ $user->phone _number ?? '-' }}
-                                </td>
-                                <td class="px-4 py-3 text-left">
-                                    {{ $user->userable_type ?? '-' }}
-                                </td>
-                                <td class="px-4 py-3 text-left">
-                                    {{ $user->userable_id ?? '-' }}
+                                    {{ $user->phone_number ?? '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -152,7 +140,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="6">
+                                <td colspan="4">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -160,7 +148,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="6">
+                                <td colspan="4">
                                     <div class="mt-10 px-4">
                                         {!! $users->render() !!}
                                     </div>

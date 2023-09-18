@@ -5,7 +5,7 @@ namespace Tests\Feature\Controllers;
 use App\Models\User;
 use App\Models\Transprter;
 
-use App\Models\TransprterType;
+use App\Models\Order;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -110,14 +110,14 @@ class TransprterControllerTest extends TestCase
     {
         $transprter = Transprter::factory()->create();
 
-        $transprterType = TransprterType::factory()->create();
+        $order = Order::factory()->create();
 
         $data = [
             'name' => $this->faker->name(),
             'identity' => $this->faker->text(255),
             'photo' => $this->faker->word(),
             'address' => $this->faker->text(255),
-            'transprter_type_id' => $transprterType->id,
+            'order_id' => $order->id,
         ];
 
         $response = $this->put(route('transprters.update', $transprter), $data);

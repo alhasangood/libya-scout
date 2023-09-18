@@ -57,10 +57,16 @@
                                     @lang('crud.scout_regiments.inputs.name')
                                 </th>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.scout_regiments.inputs.phone_number')
+                                    @lang('crud.scout_regiments.inputs.phone')
                                 </th>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.scout_regiments.inputs.scout_commission_id')
+                                    @lang('crud.scout_regiments.inputs.status')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.scout_regiments.inputs.store_house_id')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.scout_regiments.inputs.order_id')
                                 </th>
                                 <th></th>
                             </tr>
@@ -72,12 +78,19 @@
                                     {{ $scoutRegiment->name ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
-                                    {{ $scoutRegiment->phone_number ?? '-' }}
+                                    {{ $scoutRegiment->phone ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $scoutRegiment->status ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{
-                                    optional($scoutRegiment->scoutCommission)->name
+                                    optional($scoutRegiment->storeHouse)->name
                                     ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ optional($scoutRegiment->order)->id ??
+                                    '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -144,7 +157,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="4">
+                                <td colspan="6">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -152,7 +165,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="4">
+                                <td colspan="6">
                                     <div class="mt-10 px-4">
                                         {!! $scoutRegiments->render() !!}
                                     </div>

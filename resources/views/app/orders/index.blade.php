@@ -55,7 +55,10 @@
                                     @lang('crud.orders.inputs.orederNumber')
                                 </th>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.orders.inputs.transprter_id')
+                                    @lang('crud.orders.inputs.from')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.orders.inputs.to')
                                 </th>
                                 <th></th>
                             </tr>
@@ -67,8 +70,10 @@
                                     {{ $order->orederNumber ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
-                                    {{ optional($order->transprter)->name ?? '-'
-                                    }}
+                                    {{ $order->from ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $order->to ?? '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -135,7 +140,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="3">
+                                <td colspan="4">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -143,7 +148,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="3">
+                                <td colspan="4">
                                     <div class="mt-10 px-4">
                                         {!! $orders->render() !!}
                                     </div>

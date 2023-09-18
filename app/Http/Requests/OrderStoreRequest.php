@@ -21,7 +21,8 @@ class OrderStoreRequest extends FormRequest
     {
         return [
             'orederNumber' => ['required', 'max:255'],
-            'transprter_id' => ['required', 'exists:transprters,id'],
+            'from' => ['required', 'max:255'],
+            'to' => ['required', 'max:255'],
         ];
     }
 }

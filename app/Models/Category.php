@@ -11,12 +11,17 @@ class Category extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['donation_id', 'item_id'];
 
     protected $searchableFields = ['*'];
 
-    public function items()
+    public function donation()
     {
-        return $this->hasMany(Item::class);
+        return $this->belongsTo(Donation::class);
+    }
+
+    public function item()
+    {
+        return $this->belongsTo(Item::class);
     }
 }

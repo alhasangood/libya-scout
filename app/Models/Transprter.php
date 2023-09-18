@@ -11,23 +11,18 @@ class Transprter extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = [
-        'name',
-        'identity',
-        'photo',
-        'address',
-        'transprter_type_id',
-    ];
+    protected $fillable = ['name', 'identity', 'photo', 'address', 'order_id', 'transprter_type_id'];
 
     protected $searchableFields = ['*'];
 
-    public function item()
+ 
+    public function transprter()
     {
-        return $this->belongsTo(TransprterType::class, 'transprter_type_id');
+        return $this->belongsTo(Transprter::class);
     }
 
-    public function orders()
+    public function order()
     {
-        return $this->hasMany(Order::class);
+        return $this->belongsTo(Order::class);
     }
 }

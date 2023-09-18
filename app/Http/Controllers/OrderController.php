@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\View\View;
-use App\Models\Transprter;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\OrderStoreRequest;
@@ -36,9 +35,7 @@ class OrderController extends Controller
     {
         $this->authorize('create', Order::class);
 
-        $transprters = Transprter::pluck('name', 'id');
-
-        return view('app.orders.create', compact('transprters'));
+        return view('app.orders.create');
     }
 
     /**
@@ -74,9 +71,7 @@ class OrderController extends Controller
     {
         $this->authorize('update', $order);
 
-        $transprters = Transprter::pluck('name', 'id');
-
-        return view('app.orders.edit', compact('order', 'transprters'));
+        return view('app.orders.edit', compact('order'));
     }
 
     /**

@@ -31,8 +31,6 @@ class ItemAllItemDetailsController extends Controller
 
         $validated = $request->validate([
             'name' => ['required', 'max:255', 'string'],
-            'qtuantity' => ['required', 'max:255'],
-            'unit' => ['required', 'max:255', 'string'],
         ]);
 
         $itemDetails = $item->allItemDetails()->create($validated);

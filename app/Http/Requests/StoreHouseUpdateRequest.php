@@ -21,8 +21,6 @@ class StoreHouseUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:255', 'string'],
-            'store_houseable_type' => ['required', 'max:255', 'string'],
-            'store_houseable_id' => ['required', 'max:255'],
         ];
     }
 }

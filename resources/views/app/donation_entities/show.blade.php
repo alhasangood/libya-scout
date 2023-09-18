@@ -24,6 +24,12 @@
                         </h5>
                         <span>{{ $donationEntity->name ?? '-' }}</span>
                     </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.donation_entities.inputs.status')
+                        </h5>
+                        <span>{{ $donationEntity->status ?? '-' }}</span>
+                    </div>
                 </div>
 
                 <div class="mt-10">

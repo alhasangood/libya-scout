@@ -14,26 +14,35 @@
 
     <x-inputs.group class="w-full">
         <x-inputs.text
-            name="phone_number"
-            label="Phone Number"
-            :value="old('phone_number', ($editing ? $scoutRegiment->phone_number : ''))"
+            name="phone"
+            label="Phone"
+            :value="old('phone', ($editing ? $scoutRegiment->phone : ''))"
             maxlength="255"
-            placeholder="Phone Number"
+            placeholder="Phone"
             required
         ></x-inputs.text>
     </x-inputs.group>
 
     <x-inputs.group class="w-full">
-        <x-inputs.select
-            name="scout_commission_id"
-            label="Scout Commission"
+        <x-inputs.text
+            name="status"
+            label="Status"
+            :value="old('status', ($editing ? $scoutRegiment->status : ''))"
+            maxlength="255"
+            placeholder="Status"
             required
-        >
-            @php $selected = old('scout_commission_id', ($editing ? $scoutRegiment->scout_commission_id : '')) @endphp
-            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Scout Commission</option>
-            @foreach($scoutCommissions as $value => $label)
+        ></x-inputs.text>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.select name="scout_commission_id" label="scout commission" required>
+            @php $selected = old('store_house_id', ($editing ? $scoutRegiment->scout_commission_id : '')) @endphp
+            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Store House</option>
+            @foreach($scoutCommission as $value => $label)
             <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
             @endforeach
         </x-inputs.select>
     </x-inputs.group>
+
+    
 </div>

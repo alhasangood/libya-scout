@@ -36,13 +36,9 @@ class DonationEntityAllDonationDetalesController extends Controller
         $validated = $request->validate([
             'name' => ['required', 'max:255', 'string'],
             'person' => ['required', 'max:255', 'string'],
-            'phone_number' => ['required', 'max:255'],
-            'logo' => ['image', 'max:1024', 'required'],
+            'logo' => ['required', 'max:255'],
+            'number' => ['required', 'max:255'],
         ]);
-
-        if ($request->hasFile('logo')) {
-            $validated['logo'] = $request->file('logo')->store('public');
-        }
 
         $donationDetales = $donationEntity
             ->allDonationDetales()

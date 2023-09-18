@@ -5,7 +5,7 @@ namespace Tests\Feature\Controllers;
 use App\Models\User;
 use App\Models\Item;
 
-use App\Models\Category;
+use App\Models\StoreHouse;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -110,11 +110,11 @@ class ItemControllerTest extends TestCase
     {
         $item = Item::factory()->create();
 
-        $category = Category::factory()->create();
+        $storeHouse = StoreHouse::factory()->create();
 
         $data = [
             'name' => $this->faker->name(),
-            'category_id' => $category->id,
+            'store_house_id' => $storeHouse->id,
         ];
 
         $response = $this->put(route('items.update', $item), $data);

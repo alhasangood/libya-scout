@@ -57,7 +57,22 @@
                                     @lang('crud.scout_commissions.inputs.name')
                                 </th>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.scout_commissions.inputs.phone_number')
+                                    @lang('crud.scout_commissions.inputs.phone')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.scout_commissions.inputs.status')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.scout_commissions.inputs.store_house_id')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.scout_commissions.inputs.order_id')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.scout_commissions.inputs.user_id')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.scout_commissions.inputs.scout_regiment_id')
                                 </th>
                                 <th></th>
                             </tr>
@@ -69,7 +84,28 @@
                                     {{ $scoutCommission->name ?? '-' }}
                                 </td>
                                 <td class="px-4 py-3 text-left">
-                                    {{ $scoutCommission->phone_number ?? '-' }}
+                                    {{ $scoutCommission->phone ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $scoutCommission->status ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{
+                                    optional($scoutCommission->storeHouse)->name
+                                    ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ optional($scoutCommission->order)->id ??
+                                    '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ optional($scoutCommission->user)->name ??
+                                    '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{
+                                    optional($scoutCommission->scoutRegiment)->name
+                                    ?? '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -136,7 +172,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="3">
+                                <td colspan="8">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -144,7 +180,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="3">
+                                <td colspan="8">
                                     <div class="mt-10 px-4">
                                         {!! $scoutCommissions->render() !!}
                                     </div>

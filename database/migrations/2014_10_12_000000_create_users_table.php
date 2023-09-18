@@ -17,14 +17,10 @@ return new class extends Migration {
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('remember_token', 100)->nullable();
-            $table->string('phone _number');
-            $table->unsignedBigInteger('roll_id');
-            $table->unsignedBigInteger('userable_id');
-            $table->string('userable_type');
-
-            $table->index('userable_id');
-            $table->index('userable_type');
-
+            $table->string('phone_number');
+            // $table->morphs('userable');
+         
+            $table->unsignedBigInteger('scout_regiment_id');
             $table->timestamps();
         });
     }

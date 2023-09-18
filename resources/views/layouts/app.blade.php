@@ -7,7 +7,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         
-        <title>libya</title>
+        <title>libya_W</title>
         
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">

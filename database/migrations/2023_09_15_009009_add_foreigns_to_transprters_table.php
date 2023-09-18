@@ -12,11 +12,18 @@ return new class extends Migration {
     {
         Schema::table('transprters', function (Blueprint $table) {
             $table
+                ->foreign('order_id')
+                ->references('id')
+                ->on('orders')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
+                $table
                 ->foreign('transprter_type_id')
                 ->references('id')
                 ->on('transprter_types')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
+      
         });
     }
 
@@ -26,6 +33,7 @@ return new class extends Migration {
     public function down(): void
     {
         Schema::table('transprters', function (Blueprint $table) {
+            $table->dropForeign(['order_id']);
             $table->dropForeign(['transprter_type_id']);
         });
     }

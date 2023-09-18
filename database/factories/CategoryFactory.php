@@ -23,7 +23,8 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
+            'donation_id' => \App\Models\Donation::factory(),
+            'item_id' => \App\Models\Item::factory(),
         ];
     }
 }

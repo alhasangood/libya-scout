@@ -54,16 +54,10 @@
                         <thead class="text-gray-700">
                             <tr>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.all_item_details.inputs.name')
-                                </th>
-                                <th class="px-4 py-3 text-left">
                                     @lang('crud.all_item_details.inputs.item_id')
                                 </th>
-                                <th class="px-4 py-3 text-right">
-                                    @lang('crud.all_item_details.inputs.qtuantity')
-                                </th>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.all_item_details.inputs.unit')
+                                    @lang('crud.all_item_details.inputs.name')
                                 </th>
                                 <th></th>
                             </tr>
@@ -72,17 +66,11 @@
                             @forelse($allItemDetails as $itemDetails)
                             <tr class="hover:bg-gray-50">
                                 <td class="px-4 py-3 text-left">
-                                    {{ $itemDetails->name ?? '-' }}
-                                </td>
-                                <td class="px-4 py-3 text-left">
                                     {{ optional($itemDetails->item)->name ?? '-'
                                     }}
                                 </td>
-                                <td class="px-4 py-3 text-right">
-                                    {{ $itemDetails->qtuantity ?? '-' }}
-                                </td>
                                 <td class="px-4 py-3 text-left">
-                                    {{ $itemDetails->unit ?? '-' }}
+                                    {{ $itemDetails->name ?? '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -149,7 +137,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="5">
+                                <td colspan="3">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -157,7 +145,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="5">
+                                <td colspan="3">
                                     <div class="mt-10 px-4">
                                         {!! $allItemDetails->render() !!}
                                     </div>

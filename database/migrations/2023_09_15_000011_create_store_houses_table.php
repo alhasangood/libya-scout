@@ -13,11 +13,6 @@ return new class extends Migration {
         Schema::create('store_houses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->unsignedBigInteger('store_houseable_id');
-            $table->string('store_houseable_type');
-
-            $table->index('store_houseable_id');
-            $table->index('store_houseable_type');
 
             $table->timestamps();
         });

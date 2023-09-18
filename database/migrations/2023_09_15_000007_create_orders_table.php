@@ -11,9 +11,10 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->unsignedBigInteger('id');
-            $table->increments('orederNumber');
-            $table->unsignedBigInteger('transprter_id');
+            $table->bigIncrements('id');
+            $table->bigInteger('orederNumber');
+            $table->foreignId('from');
+            $table->foreignId('to');
 
             $table->timestamps();
         });

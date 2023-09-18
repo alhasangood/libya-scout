@@ -30,21 +30,9 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
-                            @lang('crud.users.inputs.phone _number')
+                            @lang('crud.users.inputs.phone_number')
                         </h5>
-                        <span>{{ $user->phone _number ?? '-' }}</span>
-                    </div>
-                    <div class="mb-4">
-                        <h5 class="font-medium text-gray-700">
-                            @lang('crud.users.inputs.userable_type')
-                        </h5>
-                        <span>{{ $user->userable_type ?? '-' }}</span>
-                    </div>
-                    <div class="mb-4">
-                        <h5 class="font-medium text-gray-700">
-                            @lang('crud.users.inputs.userable_id')
-                        </h5>
-                        <span>{{ $user->userable_id ?? '-' }}</span>
+                        <span>{{ $user->phone_number ?? '-' }}</span>
                     </div>
                 </div>
 

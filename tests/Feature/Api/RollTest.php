@@ -64,8 +64,11 @@ class RollTest extends TestCase
     {
         $roll = Roll::factory()->create();
 
+        $user = User::factory()->create();
+
         $data = [
             'name' => $this->faker->text(255),
+            'user_id' => $user->id,
         ];
 
         $response = $this->putJson(route('api.rolls.update', $roll), $data);

@@ -18,7 +18,6 @@
                 <x-form
                     method="POST"
                     action="{{ route('transprters.store') }}"
-                    has-files
                     class="mt-4"
                 >
                     @include('app.transprters.form-inputs')

@@ -21,7 +21,7 @@ class ItemUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:255', 'string'],
-            'category_id' => ['required', 'exists:categories,id'],
+            'store_house_id' => ['required', 'exists:store_houses,id'],
         ];
     }
 }

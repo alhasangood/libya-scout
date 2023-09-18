@@ -116,6 +116,7 @@ class DonationEntityControllerTest extends TestCase
 
         $data = [
             'name' => $this->faker->name(),
+            'status' => $this->faker->randomNumber(),
         ];
 
         $response = $this->put(

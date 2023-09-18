@@ -70,8 +70,6 @@ class ItemDetailsTest extends TestCase
 
         $data = [
             'name' => $this->faker->name(),
-            'unit' => $this->faker->text(255),
-            'qtuantity' => $this->faker->randomNumber(),
             'item_id' => $item->id,
         ];
 

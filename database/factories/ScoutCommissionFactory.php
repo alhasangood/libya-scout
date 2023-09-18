@@ -24,14 +24,12 @@ class ScoutCommissionFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'phone_number' => $this->faker->randomNumber(),
-            'scout_commissionable_type' => $this->faker->randomElement([
-                \App\Models\StoreHouse::class,
-                \App\Models\User::class,
-            ]),
-            'scout_commissionable_id' => function (array $item) {
-                return app($item['scout_commissionable_type'])->factory();
-            },
+            'phone' => $this->faker->randomNumber(),
+            'status' => $this->faker->randomNumber(),
+            // 'store_house_id' => \App\Models\StoreHouse::factory(),
+            // 'order_id' => \App\Models\Order::factory(),
+            // 'user_id' => \App\Models\User::factory(),
+            // 'scout_regiment_id' => \App\Models\ScoutRegiment::factory(),
         ];
     }
 }

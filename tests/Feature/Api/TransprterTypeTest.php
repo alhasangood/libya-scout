@@ -5,6 +5,8 @@ namespace Tests\Feature\Api;
 use App\Models\User;
 use App\Models\TransprterType;
 
+use App\Models\Transprter;
+
 use Tests\TestCase;
 use Laravel\Sanctum\Sanctum;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -52,8 +54,6 @@ class TransprterTypeTest extends TestCase
 
         $response = $this->postJson(route('api.transprter-types.store'), $data);
 
-        unset($data['status']);
-
         $this->assertDatabaseHas('transprter_types', $data);
 
         $response->assertStatus(201)->assertJsonFragment($data);
@@ -66,17 +66,18 @@ class TransprterTypeTest extends TestCase
     {
         $transprterType = TransprterType::factory()->create();
 
+        $transprter = Transprter::factory()->create();
+
         $data = [
             'name' => $this->faker->text(255),
             'status' => $this->faker->randomNumber(),
+            'transprter_id' => $transprter->id,
         ];
 
         $response = $this->putJson(
             route('api.transprter-types.update', $transprterType),
             $data
         );
-
-        unset($data['status']);
 
         $data['id'] = $transprterType->id;
 

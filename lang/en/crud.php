@@ -30,7 +30,8 @@ return [
         'edit_title' => 'Edit Category',
         'show_title' => 'Show Category',
         'inputs' => [
-            'name' => 'Name',
+            'donation_id' => 'Donation',
+            'item_id' => 'Item',
         ],
     ],
 
@@ -42,8 +43,10 @@ return [
         'edit_title' => 'Edit Donation',
         'show_title' => 'Show Donation',
         'inputs' => [
-            'description' => 'Description',
+            'name' => 'Name',
+            'status' => 'Status',
             'donation_detales_id' => 'Donation Detales',
+            'order_id' => 'Order',
         ],
     ],
 
@@ -55,11 +58,11 @@ return [
         'edit_title' => 'Edit DonationDetales',
         'show_title' => 'Show DonationDetales',
         'inputs' => [
+            'donation_entity_id' => 'Donation Entity',
             'name' => 'Name',
             'person' => 'Person',
-            'phone_number' => 'Phone Number',
-            'donation_entity_id' => 'Donation Entity',
             'logo' => 'Logo',
+            'number' => 'Number',
         ],
     ],
 
@@ -72,6 +75,7 @@ return [
         'show_title' => 'Show DonationEntity',
         'inputs' => [
             'name' => 'Name',
+            'status' => 'Status',
         ],
     ],
 
@@ -84,7 +88,7 @@ return [
         'show_title' => 'Show Item',
         'inputs' => [
             'name' => 'Name',
-            'category_id' => 'Donation',
+            'store_house_id' => 'Store House',
         ],
     ],
 
@@ -96,10 +100,8 @@ return [
         'edit_title' => 'Edit ItemDetails',
         'show_title' => 'Show ItemDetails',
         'inputs' => [
-            'name' => 'Name',
             'item_id' => 'Item',
-            'qtuantity' => 'Qtuantity',
-            'unit' => 'Unit',
+            'name' => 'Name',
         ],
     ],
 
@@ -112,7 +114,8 @@ return [
         'show_title' => 'Show Order',
         'inputs' => [
             'orederNumber' => 'Oreder Number',
-            'transprter_id' => 'Transprter',
+            'from' => 'From',
+            'to' => 'To',
         ],
     ],
 
@@ -125,6 +128,7 @@ return [
         'show_title' => 'Show Roll',
         'inputs' => [
             'name' => 'Name',
+            'user_id' => 'User',
         ],
     ],
 
@@ -137,7 +141,12 @@ return [
         'show_title' => 'Show ScoutCommission',
         'inputs' => [
             'name' => 'Name',
-            'phone_number' => 'Phone Number',
+            'phone' => 'Phone',
+            'status' => 'Status',
+            'store_house_id' => 'Store House',
+            'order_id' => 'Order',
+            'user_id' => 'User',
+            'scout_regiment_id' => 'Scout Regiment',
         ],
     ],
 
@@ -150,8 +159,10 @@ return [
         'show_title' => 'Show ScoutRegiment',
         'inputs' => [
             'name' => 'Name',
-            'phone_number' => 'Phone Number',
-            'scout_commission_id' => 'Scout Commission',
+            'phone' => 'Phone',
+            'status' => 'Status',
+            'store_house_id' => 'Store House',
+            'order_id' => 'Order',
         ],
     ],
 
@@ -164,8 +175,6 @@ return [
         'show_title' => 'Show StoreHouse',
         'inputs' => [
             'name' => 'Name',
-            'store_houseable_type' => 'Store Houseable Type',
-            'store_houseable_id' => 'Store Houseable Id',
         ],
     ],
 
@@ -179,9 +188,9 @@ return [
         'inputs' => [
             'name' => 'Name',
             'identity' => 'Identity',
+            'photo' => 'Photo',
             'address' => 'Address',
-            'transprter_type_id' => 'Item',
-            'photo' => ' صورة اثبات هوية',
+            'order_id' => 'Order',
         ],
     ],
 
@@ -194,6 +203,8 @@ return [
         'show_title' => 'Show TransprterType',
         'inputs' => [
             'name' => 'Name',
+            'status' => 'Status',
+            'transprter_id' => 'Transprter',
         ],
     ],
 
@@ -208,34 +219,7 @@ return [
             'name' => 'Name',
             'email' => 'Email',
             'password' => 'Password',
-            'phone _number' => 'Phone Number',
-            'userable_type' => 'Userable Type',
-            'userable_id' => 'تابعية',
-        ],
-    ],
-
-    'order_items' => [
-        'name' => 'Order Items',
-        'index_title' => ' List',
-        'new_title' => 'New Item order',
-        'create_title' => 'Create item_order',
-        'edit_title' => 'Edit item_order',
-        'show_title' => 'Show item_order',
-        'inputs' => [
-            'item_id' => 'Item',
-            'qtuantity' => 'Qtuantity',
-        ],
-    ],
-
-    'order_store_houses' => [
-        'name' => 'Order Store Houses',
-        'index_title' => ' List',
-        'new_title' => 'New Order store house',
-        'create_title' => 'Create order_store_house',
-        'edit_title' => 'Edit order_store_house',
-        'show_title' => 'Show order_store_house',
-        'inputs' => [
-            'store_house_id' => 'Store House',
+            'phone number' => 'Phone Number',
         ],
     ],
 

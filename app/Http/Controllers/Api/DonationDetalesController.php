@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\DonationDetales;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Resources\DonationDetalesResource;
 use App\Http\Resources\DonationDetalesCollection;
 use App\Http\Requests\DonationDetalesStoreRequest;
@@ -33,9 +32,6 @@ class DonationDetalesController extends Controller
         $this->authorize('create', DonationDetales::class);
 
         $validated = $request->validated();
-        if ($request->hasFile('logo')) {
-            $validated['logo'] = $request->file('logo')->store('public');
-        }
 
         $donationDetales = DonationDetales::create($validated);
 
@@ -59,14 +55,6 @@ class DonationDetalesController extends Controller
 
         $validated = $request->validated();
 
-        if ($request->hasFile('logo')) {
-            if ($donationDetales->logo) {
-                Storage::delete($donationDetales->logo);
-            }
-
-            $validated['logo'] = $request->file('logo')->store('public');
-        }
-
         $donationDetales->update($validated);
 
         return new DonationDetalesResource($donationDetales);
@@ -77,10 +65,6 @@ class DonationDetalesController extends Controller
         DonationDetales $donationDetales
     ): Response {
         $this->authorize('delete', $donationDetales);
-
-        if ($donationDetales->logo) {
-            Storage::delete($donationDetales->logo);
-        }
 
         $donationDetales->delete();
 

@@ -20,10 +20,8 @@ class ItemDetailsUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'max:255', 'string'],
             'item_id' => ['required', 'exists:items,id'],
-            'qtuantity' => ['required', 'max:255'],
-            'unit' => ['required', 'max:255', 'string'],
+            'name' => ['required', 'max:255', 'string'],
         ];
     }
 }

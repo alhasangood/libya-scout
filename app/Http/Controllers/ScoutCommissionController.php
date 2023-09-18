@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Order;
 use Illuminate\View\View;
+use App\Models\StoreHouse;
 use Illuminate\Http\Request;
+use App\Models\ScoutRegiment;
 use App\Models\ScoutCommission;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\ScoutCommissionStoreRequest;
@@ -38,7 +42,15 @@ class ScoutCommissionController extends Controller
     {
         $this->authorize('create', ScoutCommission::class);
 
-        return view('app.scout_commissions.create');
+        $storeHouses = StoreHouse::pluck('name', 'id');
+        $orders = Order::pluck('id', 'id');
+        $users = User::pluck('name', 'id');
+        $scoutRegiments = ScoutRegiment::pluck('name', 'id');
+
+        return view(
+            'app.scout_commissions.create',
+            compact('storeHouses', 'orders', 'users', 'scoutRegiments')
+        );
     }
 
     /**
@@ -79,7 +91,21 @@ class ScoutCommissionController extends Controller
     ): View {
         $this->authorize('update', $scoutCommission);
 
-        return view('app.scout_commissions.edit', compact('scoutCommission'));
+        $storeHouses = StoreHouse::pluck('name', 'id');
+        $orders = Order::pluck('id', 'id');
+        $users = User::pluck('name', 'id');
+        $scoutRegiments = ScoutRegiment::pluck('name', 'id');
+
+        return view(
+            'app.scout_commissions.edit',
+            compact(
+                'scoutCommission',
+                'storeHouses',
+                'orders',
+                'users',
+                'scoutRegiments'
+            )
+        );
     }
 
     /**

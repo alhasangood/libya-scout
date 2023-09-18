@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use App\Models\ScoutRegiment;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
@@ -38,8 +39,8 @@ class UserController extends Controller
         $this->authorize('create', User::class);
 
         $roles = Role::get();
-
-        return view('app.users.create', compact('roles'));
+        $scoutRegiments = ScoutRegiment::pluck('name', 'id');
+        return view('app.users.create', compact('roles','scoutRegiments'));
     }
 
     /**
@@ -49,10 +50,11 @@ class UserController extends Controller
     {
         $this->authorize('create', User::class);
 
+       
         $validated = $request->validated();
 
         $validated['password'] = Hash::make($validated['password']);
-
+  
         $user = User::create($validated);
 
         $user->syncRoles($request->roles);
@@ -80,8 +82,8 @@ class UserController extends Controller
         $this->authorize('update', $user);
 
         $roles = Role::get();
-
-        return view('app.users.edit', compact('user', 'roles'));
+        $scoutRegiments = ScoutRegiment::pluck('name', 'id');
+        return view('app.users.edit', compact('user', 'roles','scoutRegiments'));
     }
 
     /**

@@ -18,12 +18,6 @@
                 <div class="mt-4 px-4">
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
-                            @lang('crud.all_item_details.inputs.name')
-                        </h5>
-                        <span>{{ $itemDetails->name ?? '-' }}</span>
-                    </div>
-                    <div class="mb-4">
-                        <h5 class="font-medium text-gray-700">
                             @lang('crud.all_item_details.inputs.item_id')
                         </h5>
                         <span
@@ -33,15 +27,9 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
-                            @lang('crud.all_item_details.inputs.qtuantity')
+                            @lang('crud.all_item_details.inputs.name')
                         </h5>
-                        <span>{{ $itemDetails->qtuantity ?? '-' }}</span>
-                    </div>
-                    <div class="mb-4">
-                        <h5 class="font-medium text-gray-700">
-                            @lang('crud.all_item_details.inputs.unit')
-                        </h5>
-                        <span>{{ $itemDetails->unit ?? '-' }}</span>
+                        <span>{{ $itemDetails->name ?? '-' }}</span>
                     </div>
                 </div>
 

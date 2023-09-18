@@ -24,14 +24,6 @@ class StoreHouseFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'store_houseable_type' => $this->faker->randomElement([
-                \App\Models\ScoutRegiment::class,
-                \App\Models\ScoutCommission::class,
-                \App\Models\ScoutRegiment::class,
-            ]),
-            'store_houseable_id' => function (array $item) {
-                return app($item['store_houseable_type'])->factory();
-            },
         ];
     }
 }

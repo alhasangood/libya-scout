@@ -26,9 +26,51 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
-                            @lang('crud.scout_commissions.inputs.phone_number')
+                            @lang('crud.scout_commissions.inputs.phone')
                         </h5>
-                        <span>{{ $scoutCommission->phone_number ?? '-' }}</span>
+                        <span>{{ $scoutCommission->phone ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.scout_commissions.inputs.status')
+                        </h5>
+                        <span>{{ $scoutCommission->status ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.scout_commissions.inputs.store_house_id')
+                        </h5>
+                        <span
+                            >{{ optional($scoutCommission->storeHouse)->name ??
+                            '-' }}</span
+                        >
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.scout_commissions.inputs.order_id')
+                        </h5>
+                        <span
+                            >{{ optional($scoutCommission->order)->id ?? '-'
+                            }}</span
+                        >
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.scout_commissions.inputs.user_id')
+                        </h5>
+                        <span
+                            >{{ optional($scoutCommission->user)->name ?? '-'
+                            }}</span
+                        >
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.scout_commissions.inputs.scout_regiment_id')
+                        </h5>
+                        <span
+                            >{{ optional($scoutCommission->scoutRegiment)->name
+                            ?? '-' }}</span
+                        >
                     </div>
                 </div>
 

@@ -11,12 +11,13 @@ class Roll extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['name'];
-
+    protected $fillable = ['name', 'user_id'];
+    public const admin = 1;
+    public const user = 2;
     protected $searchableFields = ['*'];
 
-    public function users()
+    public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 }

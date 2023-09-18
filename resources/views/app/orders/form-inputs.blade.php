@@ -13,12 +13,24 @@
     </x-inputs.group>
 
     <x-inputs.group class="w-full">
-        <x-inputs.select name="transprter_id" label="Transprter" required>
-            @php $selected = old('transprter_id', ($editing ? $order->transprter_id : '')) @endphp
-            <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Transprter</option>
-            @foreach($transprters as $value => $label)
-            <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>
-            @endforeach
-        </x-inputs.select>
+        <x-inputs.text
+            name="from"
+            label="From"
+            :value="old('from', ($editing ? $order->from : ''))"
+            maxlength="255"
+            placeholder="From"
+            required
+        ></x-inputs.text>
+    </x-inputs.group>
+
+    <x-inputs.group class="w-full">
+        <x-inputs.text
+            name="to"
+            label="To"
+            :value="old('to', ($editing ? $order->to : ''))"
+            maxlength="255"
+            placeholder="To"
+            required
+        ></x-inputs.text>
     </x-inputs.group>
 </div>

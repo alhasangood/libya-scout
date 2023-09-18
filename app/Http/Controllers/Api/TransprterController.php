@@ -6,7 +6,6 @@ use App\Models\Transprter;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Resources\TransprterResource;
 use App\Http\Resources\TransprterCollection;
 use App\Http\Requests\TransprterStoreRequest;
@@ -32,9 +31,6 @@ class TransprterController extends Controller
         $this->authorize('create', Transprter::class);
 
         $validated = $request->validated();
-        if ($request->hasFile('photo')) {
-            $validated['photo'] = $request->file('photo')->store('public');
-        }
 
         $transprter = Transprter::create($validated);
 
@@ -58,14 +54,6 @@ class TransprterController extends Controller
 
         $validated = $request->validated();
 
-        if ($request->hasFile('photo')) {
-            if ($transprter->photo) {
-                Storage::delete($transprter->photo);
-            }
-
-            $validated['photo'] = $request->file('photo')->store('public');
-        }
-
         $transprter->update($validated);
 
         return new TransprterResource($transprter);
@@ -74,10 +62,6 @@ class TransprterController extends Controller
     public function destroy(Request $request, Transprter $transprter): Response
     {
         $this->authorize('delete', $transprter);
-
-        if ($transprter->photo) {
-            Storage::delete($transprter->photo);
-        }
 
         $transprter->delete();
 

@@ -12,6 +12,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Adding an admin user
+        $this->call(ScoutCommissionSeeder::class);
+        $this->call(ScoutRegimentSeeder::class);
         $user = \App\Models\User::factory()
             ->count(1)
             ->create([
@@ -31,8 +33,9 @@ class DatabaseSeeder extends Seeder
         $this->call(ScoutCommissionSeeder::class);
         $this->call(ScoutRegimentSeeder::class);
         $this->call(StoreHouseSeeder::class);
-        $this->call(TransprterSeeder::class);
         $this->call(TransprterTypeSeeder::class);
+        $this->call(TransprterSeeder::class);
+
         $this->call(UserSeeder::class);
     }
 }

@@ -11,22 +11,27 @@ class Order extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['transprter_id'];
+    protected $fillable = ['orederNumber', 'from', 'to'];
 
     protected $searchableFields = ['*'];
 
-    public function transprter()
+    public function scoutCommissions()
     {
-        return $this->belongsTo(Transprter::class);
+        return $this->hasMany(ScoutCommission::class);
     }
 
-    public function items()
+    public function scoutRegiments()
     {
-        return $this->belongsToMany(Item::class);
+        return $this->hasMany(ScoutRegiment::class);
     }
 
-    public function storeHouses()
+    public function transprters()
     {
-        return $this->belongsToMany(StoreHouse::class);
+        return $this->hasMany(Transprter::class);
+    }
+
+    public function donations()
+    {
+        return $this->hasMany(Donation::class);
     }
 }

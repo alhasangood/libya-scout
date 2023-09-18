@@ -28,9 +28,7 @@ class UserUpdateRequest extends FormRequest
                 'email',
             ],
             'password' => ['nullable'],
-            'phone _number' => ['required', 'max:255', 'string'],
-            'userable_type' => ['required', 'max:255', 'string'],
-            'userable_id' => ['required', 'max:255'],
+            'phone_number' => ['required', 'max:255', 'string'],
             'roles' => 'array',
         ];
     }

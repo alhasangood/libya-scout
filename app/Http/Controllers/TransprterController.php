@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\View\View;
 use App\Models\Transprter;
 use Illuminate\Http\Request;
 use App\Models\TransprterType;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\TransprterStoreRequest;
 use App\Http\Requests\TransprterUpdateRequest;
 
@@ -37,9 +37,9 @@ class TransprterController extends Controller
     {
         $this->authorize('create', Transprter::class);
 
-        $transprterTypes = TransprterType::pluck('name', 'id');
-
-        return view('app.transprters.create', compact('transprterTypes'));
+        $orders = Order::pluck('id', 'id');
+        $transprterType = TransprterType::pluck('name', 'id');
+        return view('app.transprters.create', compact('orders','transprterType'));
     }
 
     /**
@@ -50,9 +50,6 @@ class TransprterController extends Controller
         $this->authorize('create', Transprter::class);
 
         $validated = $request->validated();
-        if ($request->hasFile('photo')) {
-            $validated['photo'] = $request->file('photo')->store('public');
-        }
 
         $transprter = Transprter::create($validated);
 
@@ -78,12 +75,10 @@ class TransprterController extends Controller
     {
         $this->authorize('update', $transprter);
 
-        $transprterTypes = TransprterType::pluck('name', 'id');
+        $orders = Order::pluck('id', 'id');
 
-        return view(
-            'app.transprters.edit',
-            compact('transprter', 'transprterTypes')
-        );
+        $transprterType = TransprterType::pluck('name', 'id');
+        return view('app.transprters.edit', compact('transprter', 'orders','transprterType'));
     }
 
     /**
@@ -96,13 +91,6 @@ class TransprterController extends Controller
         $this->authorize('update', $transprter);
 
         $validated = $request->validated();
-        if ($request->hasFile('photo')) {
-            if ($transprter->photo) {
-                Storage::delete($transprter->photo);
-            }
-
-            $validated['photo'] = $request->file('photo')->store('public');
-        }
 
         $transprter->update($validated);
 
@@ -119,10 +107,6 @@ class TransprterController extends Controller
         Transprter $transprter
     ): RedirectResponse {
         $this->authorize('delete', $transprter);
-
-        if ($transprter->photo) {
-            Storage::delete($transprter->photo);
-        }
 
         $transprter->delete();
 

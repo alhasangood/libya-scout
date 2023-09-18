@@ -56,6 +56,12 @@
                                 <th class="px-4 py-3 text-left">
                                     @lang('crud.transprter_types.inputs.name')
                                 </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.transprter_types.inputs.status')
+                                </th>
+                                <th class="px-4 py-3 text-left">
+                                    @lang('crud.transprter_types.inputs.transprter_id')
+                                </th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -64,6 +70,14 @@
                             <tr class="hover:bg-gray-50">
                                 <td class="px-4 py-3 text-left">
                                     {{ $transprterType->name ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ $transprterType->status ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{
+                                    optional($transprterType->transprter)->name
+                                    ?? '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"
@@ -130,7 +144,7 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="2">
+                                <td colspan="4">
                                     @lang('crud.common.no_items_found')
                                 </td>
                             </tr>
@@ -138,7 +152,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="2">
+                                <td colspan="4">
                                     <div class="mt-10 px-4">
                                         {!! $transprterTypes->render() !!}
                                     </div>

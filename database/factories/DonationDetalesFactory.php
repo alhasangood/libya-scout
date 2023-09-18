@@ -26,8 +26,7 @@ class DonationDetalesFactory extends Factory
             'name' => $this->faker->name(),
             'person' => $this->faker->text(255),
             'logo' => $this->faker->word(),
-            'phone_number' => $this->faker->randomNumber(),
-            'user_id' => \App\Models\User::factory(),
+            'number' => $this->faker->randomNumber(),
             'donation_entity_id' => \App\Models\DonationEntity::factory(),
         ];
     }

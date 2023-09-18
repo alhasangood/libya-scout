@@ -23,11 +23,10 @@ class DonationFactory extends Factory
     public function definition(): array
     {
         return [
-            'description' => $this->faker->name(),
-            'qtuantity' => $this->faker->randomNumber(),
+            'name' => $this->faker->name(),
+            'status' => $this->faker->randomNumber(),
             'donation_detales_id' => \App\Models\DonationDetales::factory(),
-            'item_id' => \App\Models\Item::factory(),
-            'store_house_id' => \App\Models\StoreHouse::factory(),
+            'order_id' => \App\Models\Order::factory(),
         ];
     }
 }

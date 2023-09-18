@@ -20,7 +20,8 @@ class CategoryStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'max:255', 'string'],
+            'donation_id' => ['required', 'exists:donations,id'],
+            'item_id' => ['required', 'exists:items,id'],
         ];
     }
 }

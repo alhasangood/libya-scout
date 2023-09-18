@@ -24,12 +24,15 @@
                     </div>
                     <div class="mb-4">
                         <h5 class="font-medium text-gray-700">
-                            @lang('crud.orders.inputs.transprter_id')
+                            @lang('crud.orders.inputs.from')
                         </h5>
-                        <span
-                            >{{ optional($order->transprter)->name ?? '-'
-                            }}</span
-                        >
+                        <span>{{ $order->from ?? '-' }}</span>
+                    </div>
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700">
+                            @lang('crud.orders.inputs.to')
+                        </h5>
+                        <span>{{ $order->to ?? '-' }}</span>
                     </div>
                 </div>
 

@@ -5,7 +5,7 @@ namespace Tests\Feature\Api;
 use App\Models\User;
 use App\Models\Transprter;
 
-use App\Models\TransprterType;
+use App\Models\Order;
 
 use Tests\TestCase;
 use Laravel\Sanctum\Sanctum;
@@ -66,14 +66,14 @@ class TransprterTest extends TestCase
     {
         $transprter = Transprter::factory()->create();
 
-        $transprterType = TransprterType::factory()->create();
+        $order = Order::factory()->create();
 
         $data = [
             'name' => $this->faker->name(),
             'identity' => $this->faker->text(255),
             'photo' => $this->faker->word(),
             'address' => $this->faker->text(255),
-            'transprter_type_id' => $transprterType->id,
+            'order_id' => $order->id,
         ];
 
         $response = $this->putJson(

@@ -13,6 +13,7 @@ return new class extends Migration {
         Schema::create('rolls', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->unsignedBigInteger('user_id');
 
             $table->timestamps();
         });

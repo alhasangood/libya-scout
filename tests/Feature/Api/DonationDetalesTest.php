@@ -57,8 +57,6 @@ class DonationDetalesTest extends TestCase
             $data
         );
 
-        unset($data['user_id']);
-
         $this->assertDatabaseHas('donation_detales', $data);
 
         $response->assertStatus(201)->assertJsonFragment($data);
@@ -71,15 +69,13 @@ class DonationDetalesTest extends TestCase
     {
         $donationDetales = DonationDetales::factory()->create();
 
-        $user = User::factory()->create();
         $donationEntity = DonationEntity::factory()->create();
 
         $data = [
             'name' => $this->faker->name(),
             'person' => $this->faker->text(255),
             'logo' => $this->faker->word(),
-            'phone_number' => $this->faker->randomNumber(),
-            'user_id' => $user->id,
+            'number' => $this->faker->randomNumber(),
             'donation_entity_id' => $donationEntity->id,
         ];
 
@@ -87,8 +83,6 @@ class DonationDetalesTest extends TestCase
             route('api.all-donation-detales.update', $donationDetales),
             $data
         );
-
-        unset($data['user_id']);
 
         $data['id'] = $donationDetales->id;
 
