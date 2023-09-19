@@ -24,6 +24,7 @@ class StoreHouseFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
+            'scout_regiment_id'=>1,
         ];
     }
 }

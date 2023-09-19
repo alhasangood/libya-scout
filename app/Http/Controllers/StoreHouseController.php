@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\View\View;
 use App\Models\StoreHouse;
 use Illuminate\Http\Request;
+use App\Models\ScoutRegiment;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\StoreHouseStoreRequest;
 use App\Http\Requests\StoreHouseUpdateRequest;
@@ -34,8 +35,8 @@ class StoreHouseController extends Controller
     public function create(Request $request): View
     {
         $this->authorize('create', StoreHouse::class);
-
-        return view('app.store_houses.create');
+        $scoutRegiments = ScoutRegiment::pluck('name', 'id');
+        return view('app.store_houses.create' ,compact('scoutRegiments'));
     }
 
     /**
@@ -70,8 +71,8 @@ class StoreHouseController extends Controller
     public function edit(Request $request, StoreHouse $storeHouse): View
     {
         $this->authorize('update', $storeHouse);
-
-        return view('app.store_houses.edit', compact('storeHouse'));
+        $scoutRegiments = ScoutRegiment::pluck('name', 'id');
+        return view('app.store_houses.edit', compact('storeHouse','scoutRegiments'));
     }
 
     /**

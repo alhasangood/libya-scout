@@ -59,7 +59,7 @@
             label="Scout Regiment"
             required
         >
-            @php $selected = old('scout_regiment_id', ($editing ? $user->id : '')) @endphp
+            @php $selected = old('scout_regiment_id', ($editing ? $user->scout_regiment_id : '')) @endphp
             <option disabled {{ empty($selected) ? 'selected' : '' }}>Please select the Scout Regiment</option>
             @foreach($scoutRegiments as $value => $label)
             <option value="{{ $value }}" {{ $selected == $value ? 'selected' : '' }} >{{ $label }}</option>

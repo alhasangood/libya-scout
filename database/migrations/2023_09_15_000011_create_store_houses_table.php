@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('store_houses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-
+            $table->unsignedBigInteger('scout_regiment_id');
             $table->timestamps();
         });
     }

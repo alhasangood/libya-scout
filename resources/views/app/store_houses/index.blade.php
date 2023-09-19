@@ -56,6 +56,9 @@
                                 <th class="px-4 py-3 text-left">
                                     @lang('crud.store_houses.inputs.name')
                                 </th>
+                                <th class="px-4 py-3 text-left">
+                                    Regiment name
+                                </th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -64,6 +67,9 @@
                             <tr class="hover:bg-gray-50">
                                 <td class="px-4 py-3 text-left">
                                     {{ $storeHouse->name ?? '-' }}
+                                </td>
+                                <td class="px-4 py-3 text-left">
+                                    {{ optional($storeHouse->scoutRegiment)->name ?? '-' }}
                                 </td>
                                 <td
                                     class="px-4 py-3 text-center"

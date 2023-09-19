@@ -63,11 +63,9 @@
                                     @lang('crud.scout_regiments.inputs.status')
                                 </th>
                                 <th class="px-4 py-3 text-left">
-                                    @lang('crud.scout_regiments.inputs.store_house_id')
+                                    @lang('crud.scout_regiments.inputs.scout_commission_id')
                                 </th>
-                                <th class="px-4 py-3 text-left">
-                                    @lang('crud.scout_regiments.inputs.order_id')
-                                </th>
+                                
                                 <th></th>
                             </tr>
                         </thead>
@@ -85,13 +83,10 @@
                                 </td>
                                 <td class="px-4 py-3 text-left">
                                     {{
-                                    optional($scoutRegiment->storeHouse)->name
+                                    optional($scoutRegiment->scoutCommission)->name
                                     ?? '-' }}
                                 </td>
-                                <td class="px-4 py-3 text-left">
-                                    {{ optional($scoutRegiment->order)->id ??
-                                    '-' }}
-                                </td>
+                                
                                 <td
                                     class="px-4 py-3 text-center"
                                     style="width: 134px;"

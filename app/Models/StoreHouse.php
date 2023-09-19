@@ -11,7 +11,7 @@ class StoreHouse extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name','scout_regiment_id'];
 
     protected $searchableFields = ['*'];
 
@@ -19,16 +19,12 @@ class StoreHouse extends Model
 
     public function scoutRegiment()
     {
-        return $this->hasOne(ScoutRegiment::class);
-    }
-
-    public function scoutCommission()
-    {
-        return $this->hasOne(ScoutCommission::class);
+        return $this->belongsTo(ScoutRegiment::class);
     }
 
     public function items()
     {
         return $this->hasMany(Item::class);
     }
+    
 }
